@@ -1,0 +1,39 @@
+- defaults:
+    link:
+      create: true
+      relink: true
+
+- clean: ['~', '~/.config']
+
+- link:
+    # bash
+    ~/.bashrc:
+      force: true
+    ~/.bash:
+    # dotfile
+    ~/.dotfiles: ""
+    # git
+    ~/.gitconfig:
+    ~/.gitignore_global:
+    # shell
+    ~/.shell:
+    # ssh
+    ~/.ssh/config: ssh/config
+    # tmux
+    ~/.tmux:
+    ~/.tmux.conf:
+    # vim
+    ~/.vim:
+      force: true
+    ~/.vimrc:
+    # zsh
+    ~/.p10k.zsh:
+    ~/.zsh:
+      force: true
+    ~/.zshrc:
+
+- create:
+    - ~/.cache/oh-my-zsh
+
+- shell:
+  - [git submodule update --init --recursive, Installing submodules]

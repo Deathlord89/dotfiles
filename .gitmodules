@@ -1,0 +1,84 @@
+[submodule ".dotbot"]
+	path = .dotbot
+	url = https://github.com/anishathalye/dotbot
+	ignore = dirty
+[submodule "zsh/oh-my-zsh"]
+	path = zsh/oh-my-zsh
+	url = https://github.com/ohmyzsh/ohmyzsh
+	ignore = untracked
+[submodule "vim/pack/plugins/start/vim-colors-solarized"]
+	path = vim/pack/plugins/start/vim-colors-solarized
+	url = https://github.com/altercation/vim-colors-solarized
+	ignore = untracked
+[submodule "vim/pack/plugins/start/vim-fugitive"]
+	path = vim/pack/plugins/start/vim-fugitive
+	url = https://github.com/tpope/vim-fugitive
+	ignore = untracked
+[submodule "vim/pack/plugins/start/vim-git"]
+	path = vim/pack/plugins/start/vim-git
+	url = https://github.com/tpope/vim-git
+	ignore = untracked
+[submodule "vim/pack/plugins/start/vim-airline"]
+	path = vim/pack/plugins/start/vim-airline
+	url = https://github.com/vim-airline/vim-airline
+	ignore = untracked
+[submodule "zsh/custom/themes/powerlevel10k"]
+	path = zsh/custom/themes/powerlevel10k
+	url = https://github.com/romkatv/powerlevel10k
+	ignore = untracked
+[submodule "zsh/custom/plugins/zsh-completions"]
+	path = zsh/custom/plugins/zsh-completions
+	url = https://github.com/zsh-users/zsh-completions
+	ignore = untracked
+[submodule "zsh/custom/plugins/zsh-syntax-highlighting"]
+	path = zsh/custom/plugins/zsh-syntax-highlighting
+	url = https://github.com/zsh-users/zsh-syntax-highlighting
+	ignore = untracked
+[submodule "vim/pack/plugins/start/vim-gitgutter"]
+	path = vim/pack/plugins/start/vim-gitgutter
+	url = https://github.com/airblade/vim-gitgutter
+	ignore = untracked
+[submodule "vim/pack/plugins/start/vim-airline-themes"]
+	path = vim/pack/plugins/start/vim-airline-themes
+	url = https://github.com/vim-airline/vim-airline-themes
+	ignore = untracked
+[submodule "zsh/custom/plugins/zsh-autosuggestions"]
+	path = zsh/custom/plugins/zsh-autosuggestions
+	url = https://github.com/zsh-users/zsh-autosuggestions
+	ignore = untracked
+[submodule "vim/pack/plugins/start/syntastic"]
+	path = vim/pack/plugins/start/syntastic
+	url = https://github.com/vim-syntastic/syntastic
+	ignore = untracked
+[submodule "tmux/plugins/tpm"]
+	path = tmux/plugins/tpm
+	url = https://github.com/tmux-plugins/tpm
+	ignore = untracked
+[submodule "tmux/plugins/tmux-prefix-highlight"]
+	path = tmux/plugins/tmux-prefix-highlight
+	url = https://github.com/tmux-plugins/tmux-prefix-highlight
+	ignore = untracked
+[submodule "tmux/plugins/tmux-online-status"]
+	path = tmux/plugins/tmux-online-status
+	url = https://github.com/tmux-plugins/tmux-online-status
+	ignore = untracked
+[submodule "tmux/plugins/tmux-plugin-sysstat"]
+	path = tmux/plugins/tmux-plugin-sysstat
+	url = https://github.com/samoshkin/tmux-plugin-sysstat
+	ignore = untracked
+[submodule "vim/pack/plugins/start/nerdtree"]
+	path = vim/pack/plugins/start/nerdtree
+	url = https://github.com/preservim/nerdtree
+	ignore = untracked
+[submodule "vim/pack/plugins/start/supertab"]
+	path = vim/pack/plugins/start/supertab
+	url = https://github.com/ervandew/supertab
+	ignore = untracked
+[submodule "tmux/plugins/tmux-sidebar"]
+	path = tmux/plugins/tmux-sidebar
+	url = https://github.com/tmux-plugins/tmux-sidebar
+	ignore = untracked
+[submodule "vim/pack/plugins/start/vim-css-color"]
+	path = vim/pack/plugins/start/vim-css-color
+	url = https://github.com/ap/vim-css-color
+	ignore = untracked
