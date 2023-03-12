@@ -1,0 +1,15 @@
+{{ if or (eq .chezmoi.os "linux") (eq .chezmoi.os "darwin") -}}
+#!/usr/bin/env bash
+
+if test "$(uname -s)" == "Linux"; then
+  eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+fi
+
+echo -e "==> [homebrew] install packages..."
+
+brew bundle --no-lock --file=/dev/stdin <<EOF
+{{ includeTemplate "private_dot_config/brew/Brewfile.tmpl" . }}
+EOF
+
+echo -e "✅  [homebrew] packages installed!"
+{{ end -}}

@@ -1,0 +1,8 @@
+name: Homebrew
+title: Inspec-Profile for Homebrew custom tests 
+summary: Verify that Homebrew is installed and executables exists
+maintainer: Marc-André Gerbig
+version: 0.0.1(Beta)
+depends:
+  - name: Chezmoi
+    path: test/integration/10_chezmoi_spec
