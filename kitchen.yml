@@ -8,18 +8,12 @@ driver:
     - ['.', '/home/vagrant/dotfiles']
   customize:
     memory: 2048
-  require_chef_omnibus: true
 
 provisioner:
   name: salt_solo
   require_chef: false
   is_file_root: true
   local_salt_root: test/saltstack
-  #formula: prepare_chezmoi
-  salt_copy_filter:
-  - .git
-  - .kitchen
-  - home
   salt_minion_extra_config:
     state_output: "changes"
     state_aggregate:

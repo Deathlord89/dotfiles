@@ -1,4 +1,4 @@
-control 'Chezmoi' do
+control 'Chezmoi package' do
     title 'should be installed'
     
     describe.one do
@@ -9,10 +9,12 @@ control 'Chezmoi' do
             it { should exist }
         end
     end
-
+end
+control 'Chezmoi config files' do
+    title 'should be at the right place'
+    
     describe file('/home/vagrant/.config/chezmoi/chezmoi.toml') do
         it { should exist }
         its('owner') { should eq "vagrant" }
     end
-
 end
