@@ -26,7 +26,7 @@ For macOS the easiest way is to install homebrew first and then install chemzoi 
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ```
 
-## Chezmoi
+## Install the dotfiles with chezmoi
 The following environment variables can be set to configure chezmoi when applying changed:
 * `DOTFILES_MINIMAL` Set to `1` if you want to install the minimal version
 

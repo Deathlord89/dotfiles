@@ -1,0 +1,92 @@
+{{- $hash := include .chezmoi.sourceFile | sha256sum -}}
+
+function fish_reset
+  for pref in $fish_prefs
+    set -S $pref
+    set -U -e $pref
+    printf '\n'
+  end
+  set -U -e fish_prefs fish_prefs_hash
+  source (status current-filename)
+end
+
+if not set -q fish_prefs_hash; or test $fish_prefs_hash != {{ $hash }}
+  function def
+    set -f -a options (fish_opt --short=x --long=export)
+
+    argparse --min-args 2 --stop-nonopt $options -- $argv; or return
+    set -q _flag_x; and set -a flags -x
+
+    set -Ua fish_prefs $argv[1]
+    if not set -q $argv[1]
+      set -U $flags $argv
+    end
+  end
+
+  status is-interactive; and echo '✅ [fish] Setting default preferences...' >&2
+
+  #
+  # defaults
+  #
+
+  # universal
+  if type -q nvim
+    def -x EDITOR nvim
+    def -x VISUAL nvim
+  else if type -q vim
+    def -x EDITOR vim
+    def -x VISUAL vim
+  end
+
+  #
+  # toolchains
+  #
+
+  # asdf
+  def -x ASDF_DIR $HOMEBREW_PREFIX/opt/asdf/libexec
+  def -x ASDF_DATA_DIR $XDG_DATA_HOME/asdf
+
+  #
+  # tools
+  #
+
+  # fish
+  def fish_greeting ''
+  def fish_term24bit 1
+  
+  # homebrew
+  def -x HOMEBREW_AUTOREMOVE 1
+  def -x HOMEBREW_AUTO_UPDATE_SECS 60
+  def -x HOMEBREW_BAT 1
+  def -x HOMEBREW_BUNDLE_FILE $XDG_CONFIG_HOME/brew/Brewfile
+  def -x HOMEBREW_CASK_OPTS --no-quarantine
+  def -x HOMEBREW_CLEANUP_MAX_AGE_DAYS 30
+  def -x HOMEBREW_CLEANUP_PERIODIC_FULL_DAYS 7
+  def -x HOMEBREW_NO_COMPAT 1
+  def -x HOMEBREW_NO_ENV_HINTS 1
+  def -x HOMEBREW_NO_INSECURE_REDIRECT 1
+  def -x HOMEBREW_UPDATE_REPORT_ALL_FORMULAE 1
+  def -x HOMEBREW_UPDATE_TO_TAG 1
+
+  # vagrant
+  def -x VAGRANT_HOME $XDG_DATA_HOME/vagrant
+
+  ## Alacritty SSH error workaround
+  #if test $TERM = alacritty
+  #  set -gx TERM xterm-256color
+  #end
+  #
+  ## Kitty SSH error workaround
+  #if test $TERM = xterm-kitty
+  #  set -gx TERM xterm-256color
+  #end
+  #
+  ## Termite tmux SSH error workaround
+  #if test $TERM = xterm-termite
+  #  set -gx TERM xterm-256color
+  #end
+
+  # cleanup
+  functions -e defz
+  set -U fish_prefs_hash {{ $hash }}
+end
