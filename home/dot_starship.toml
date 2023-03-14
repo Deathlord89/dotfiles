@@ -1,0 +1,66 @@
+format = """
+$username\
+$hostname\
+$directory\
+$git_branch\
+$git_state\
+$git_status\
+$git_metrics\
+$dotnet\
+$golang\
+$nodejs\
+$python\
+$ruby\
+$rust\
+$fill\
+$status\
+$cmd_duration \
+$time \
+$battery\
+$line_break\
+$shlvl \
+$jobs \
+$character
+"""
+
+[os]
+disabled = false
+
+[fill]
+symbol = " "
+
+[directory]
+format = "[ $path ]($style)"
+read_only = " "
+truncation_length = 3
+truncation_symbol = "…/"
+#truncate_to_repo = false
+
+[jobs]
+symbol = ""
+style = "bold red"
+number_threshold = 1
+format = "[$symbol]($style)"
+
+[cmd_duration]
+format = "[$duration]($style)"
+style = "yellow"
+
+[git_status]
+format = '([\[$all_status$ahead_behind\]]($style) )'
+ignore_submodules = true
+
+[git_metrics]
+disabled = false
+
+[memory_usage]
+symbol = " "
+
+[time]
+disabled = false
+time_format = "%R" # Hour:Minute Format
+style = "bold white"
+format = "[$time]($style)"
+
+[lua]
+symbol = " "
