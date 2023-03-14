@@ -22,6 +22,9 @@ sudo zypper install patterns-devel-base-devel_basis curl file git
 ```
 ### macOS
 For macOS the easiest way is to install homebrew first and then install chemzoi with `brew install chezmoi`. The homebrew dependencies are installed by itselve.
+```sh
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+```
 
 ## Chezmoi
 The following environment variables can be set to configure chezmoi when applying changed:
