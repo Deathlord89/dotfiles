@@ -3,4 +3,4 @@
 ---
 include:
     - prepare_chezmoi.required_packages
-    - prepare_chezmoi.minimal
+    - prepare_chezmoi.install

@@ -41,7 +41,7 @@ suites:
       state_top:
         base:
           "*":
-            - prepare_chezmoi.minimal
+            - prepare_chezmoi.install
       pillars:
         top.sls:
           base:
