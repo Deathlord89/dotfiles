@@ -3,13 +3,16 @@ control 'Essential packages' do
     title 'should be installed'
     
     env_brew_apps = %w[
+      asdf
       bat
       chezmoi
       exa
       fd
       fish
       gpg
+      ranger
       starship
+      xclip
     ]
 
     env_brew_apps.each do |env_brew_app|
@@ -17,6 +20,5 @@ control 'Essential packages' do
         it { should exist }
       end
     end
-
 
 end
