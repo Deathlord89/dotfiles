@@ -79,7 +79,7 @@ keymap("x", "<A-k>", ":move '<-2<CR>gv-gv", opts)
 -- Plugins --
 
 -- NvimTree
---keymap("n", "<leader>e", ":NvimTreeToggle<CR>", opts)
+keymap("n", "<leader>e", ":NvimTreeToggle<CR>", opts)
 
 -- Telescope
 --keymap("n", "<leader>ff", ":Telescope find_files<CR>", opts)

@@ -1,8 +1,6 @@
 local options = {
   -- general options
   autoread = true,                         -- Reload files changed outside vim
-  -- needs testing
-  -- backspace= { "indent", "eol", "start" }, -- Allow backspace in insert mode
   clipboard = "unnamedplus",               -- allows neovim to access the system clipboard
   cmdheight = 2,                           -- more space in the neovim command line for displaying messages
   completeopt = { "menuone", "noselect" }, -- mostly just for cmp
@@ -17,7 +15,6 @@ local options = {
   relativenumber = true,                   -- set relative numbered lines
   showmode = false,                        -- we don't need to see things like -- INSERT -- anymore
   timeoutlen = 400,                        -- time to wait for a mapped sequence to complete (in milliseconds)
-  ttimeoutlen = 400,                       -- time to wait for a key code sequence to complete (in milliseconds)
   updatetime = 300,                        -- faster completion (4000ms default)
 
   -- apperance
@@ -56,7 +53,7 @@ local options = {
   wrap = false,                            -- display lines as one long line
 
   -- search settings
-  history = 1024,                          -- History size
+  history = 10000,                          -- History size
   hlsearch = true,                         -- highlight all matches on previous search pattern
   ignorecase = true,                       -- ignore case in search patterns
   incsearch = true,                        -- highlight as you type you search phrase
