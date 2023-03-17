@@ -17,7 +17,6 @@ return{
         return col == 0 or vim.fn.getline("."):sub(col, col):match "%s"
       end
 
-      re
       local kind_icons = {
         Text = "",
         Method = "",
