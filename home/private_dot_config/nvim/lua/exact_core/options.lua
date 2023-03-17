@@ -8,6 +8,7 @@ local options = {
   completeopt = { "menuone", "noselect" }, -- mostly just for cmp
   ffs = { "unix", "mac", "dos" },          -- Use unix as the standard file type
   fileencoding = "utf-8",                  -- the encoding written to a file
+  hidden = true,                           -- This makes vim act like all other editors
   lazyredraw = true,                       -- skip redrawing screen in some cases
   modelines = 2,                           -- Enable modelines in files
   mouse = "a",                             -- allow the mouse to be used in neovim
@@ -15,13 +16,15 @@ local options = {
   numberwidth = 4,                         -- set number column width to 2 {default 4}
   relativenumber = true,                   -- set relative numbered lines
   showmode = false,                        -- we don't need to see things like -- INSERT -- anymore
-  timeoutlen = 300,                        -- time to wait for a mapped sequence to complete (in milliseconds)
+  timeoutlen = 400,                        -- time to wait for a mapped sequence to complete (in milliseconds)
+  ttimeoutlen = 400,                       -- time to wait for a key code sequence to complete (in milliseconds)
   updatetime = 300,                        -- faster completion (4000ms default)
 
   -- apperance
   -- background = "dark",
   conceallevel = 0,                        -- so that `` is visible in markdown files
   cursorline = true,                       -- highlight the current line
+  errorbells = false,                      -- No Beep!
   guifont = "monospace:h17",               -- the font used in graphical neovim applications
   laststatus = 2,                          -- always show the status line
   pumheight = 10,                          -- pop up menu height
@@ -33,6 +36,7 @@ local options = {
   splitbelow = true,                       -- force all horizontal splits to go below current window
   splitright = true,                       -- force all vertical splits to go to the right of current window
   termguicolors = true,                    -- set term gui colors (most terminals support this)
+  visualbell = true,                       -- Blink!
 
   -- tabs and indention
   expandtab = true,                        -- Give me spaces or give me death
