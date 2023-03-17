@@ -11,6 +11,9 @@ return{
     "nvim-tree/nvim-tree.lua",
     lazy = false,
     opts = {
+      disable_netrw = true,
+      hijack_netrw = true,
+      hijack_cursor = true,
       update_focused_file = {
         enable = true,
         update_cwd = true,
