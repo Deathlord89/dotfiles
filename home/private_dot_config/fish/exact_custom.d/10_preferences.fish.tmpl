@@ -72,19 +72,19 @@ if not set -q fish_prefs_hash; or test $fish_prefs_hash != {{ $hash }}
   def -x VAGRANT_HOME $XDG_DATA_HOME/vagrant
 
   ## Alacritty SSH error workaround
-  #if test $TERM = alacritty
-  #  set -gx TERM xterm-256color
-  #end
+  if test $TERM = alacritty
+    set -gx TERM xterm-256color
+  end
   #
   ## Kitty SSH error workaround
-  #if test $TERM = xterm-kitty
-  #  set -gx TERM xterm-256color
-  #end
+  if test $TERM = xterm-kitty
+    set -gx TERM xterm-256color
+  end
   #
   ## Termite tmux SSH error workaround
-  #if test $TERM = xterm-termite
-  #  set -gx TERM xterm-256color
-  #end
+  if test $TERM = xterm-termite
+    set -gx TERM xterm-256color
+  end
 
   # cleanup
   functions -e defz
