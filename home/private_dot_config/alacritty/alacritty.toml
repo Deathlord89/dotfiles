@@ -1,0 +1,53 @@
+live_config_reload = true
+
+[colors]
+draw_bold_text_with_bright_colors = true
+
+[cursor.style]
+blinking = "On"
+shape = "Block"
+
+[font]
+size = 9.0
+
+[font.bold]
+family = "JetBrainsMonoNL Nerd Font Mono"
+style = "Bold"
+
+[font.bold_italic]
+family = "JetBrainsMonoNL Nerd Font Mono"
+style = "Bold Italic"
+
+[font.italic]
+family = "JetBrainsMonoNL Nerd Font Mono"
+style = "Italic"
+
+[font.normal]
+family = "JetBrainsMonoNL Nerd Font Mono"
+style = "Regular"
+
+[font.offset]
+x = 0
+y = 0
+
+[mouse]
+hide_when_typing = false
+
+[scrolling]
+history = 2000
+
+[window]
+decorations = "full"
+opacity = 0.85
+dynamic_padding = true
+dynamic_title = true
+decorations_theme_variant = "None"
+title = "Alacritty"
+
+[window.class]
+general = "Alacritty"
+instance = "Alacritty"
+
+[window.padding]
+x = 2
+y = 2
