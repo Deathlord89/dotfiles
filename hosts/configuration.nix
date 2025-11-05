@@ -77,6 +77,9 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
+  # Define your hostname.
+  networking.hostName = "NixosVM";
+
   # Enable networking
   networking.networkmanager.enable = true;
 
@@ -134,7 +137,6 @@
       ];
       packages = with pkgs; [
         kdePackages.kate
-        lazygit
       ];
     };
   };
@@ -146,8 +148,29 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     git
-    neovim
   ];
+
+  programs.ssh.startAgent = lib.mkForce false;
+
+  # https://discourse.nixos.org/t/gpg-smartcard-for-ssh/33689
+  hardware.gpgSmartcards.enable = true; # for yubikey
+
+  services = {
+    #gnome.gcr-ssh-agent.enable = lib.mkForce false; # Unstable
+    pcscd.enable = true;
+    udev.packages = with pkgs; [
+      yubikey-personalization
+    ];
+  };
+
+  programs.nh = {
+    enable = true;
+    package = pkgs.unstable.nh;
+    clean = {
+      enable = true;
+      extraArgs = "--keep-since 4d --keep 3";
+    };
+  };
 
   # This setups a SSH server. Very important if you're setting up a headless system.
   # Feel free to remove if you don't need it.

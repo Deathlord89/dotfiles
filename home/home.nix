@@ -18,7 +18,8 @@
     # inputs.nix-colors.homeManagerModules.default
 
     # You can also split up your configuration and import pieces of it here:
-    # ./nvim.nix
+    ./git.nix
+    ./gpg.nix
   ];
 
   nixpkgs = {
@@ -50,11 +51,15 @@
   home = {
     username = "ma-gerbig";
     homeDirectory = "/home/ma-gerbig";
+    sessionVariables = {
+      EDITOR = "nvim";
+      NH_FLAKE = "$HOME/git/dotfiles";
+    };
   };
 
   # Add stuff for your user as you see fit:
-  # programs.neovim.enable = true;
-  # home.packages = with pkgs; [ steam ];
+  programs.neovim.enable = true;
+  home.packages = with pkgs; [ lazygit ];
 
   # Enable home-manager and git
   programs.home-manager.enable = true;
