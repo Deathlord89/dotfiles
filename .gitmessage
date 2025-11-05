@@ -1,0 +1,36 @@
+#<Type>(<Scope>): <Short summary of the change>
+
+# Detailed description:
+# - What was changed?
+# - Why was it changed?
+# - What are the effects or implications?
+
+# Optional: References
+# Closes: #<issue number>       (if this commit fixes the issue)
+# Refs: #<issue number>         (if this commit relates to an issue)
+# See also: <link>              (e.g., to PRs, discussions, upstream changes)
+
+# Examples of types:
+# feat      – New feature (e.g. new module, package)
+# fix       – Bug fix
+# refactor  – Code/module restructuring without functional change
+# chore     – Maintenance, flake.lock updates, CI setup, etc.
+# docs      – Documentation changes
+# style     – Formatting only (whitespace, comments)
+# perf      – Performance improvements
+
+# Examples of scopes:
+# flake, system, home-manager, host (e.g. laptop, server), module, package
+
+# Example:
+# feat(laptop): add tailscale with autostart
+#
+# - Added the tailscale module
+# - Enabled systemd service with auto-authentication
+#
+# Closes: #12
+
+# Lines starting with '#' are ignored and used only for guidance.
+
+# How to use:
+# git config commit.template .gitmessage 

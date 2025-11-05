@@ -1,3 +1,0 @@
-{{- if .headless }}
-.chezmoiscripts/homebrew/*
-{{- end }}
