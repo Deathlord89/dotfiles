@@ -26,7 +26,7 @@
       # Add overlays your own flake exports (from overlays and pkgs dir):
       outputs.overlays.additions
       outputs.overlays.modifications
-      outputs.overlays.unstable-packages
+      outputs.overlays.stable-unstable
 
       # You can also add overlays exported from other flakes:
       # neovim-nightly-overlay.overlays.default
@@ -45,10 +45,10 @@
     };
   };
 
-  # TODO: Set your username
+  # Set your username
   home = {
-    username = "your-username";
-    homeDirectory = "/home/your-username";
+    username = "ma-gerbig";
+    homeDirectory = "/home/ma-gerbig";
   };
 
   # Add stuff for your user as you see fit:
@@ -58,10 +58,14 @@
   # Enable home-manager and git
   programs.home-manager.enable = true;
   programs.git.enable = true;
+  programs.bash = {
+    enable = true;
+    enableCompletion = true;
+  };
 
   # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
-  home.stateVersion = "23.05";
+  home.stateVersion = "25.05";
 }
