@@ -5,7 +5,7 @@
     # NixOS Stable
     nixpkgs.url = "github:nixos/nixpkgs/nixos-25.05";
 
-    # NixOS Unstable - also see the 'stable-packages' overlay at 'overlays/default.nix'.
+    # NixOS Unstable - also see the 'stable-unstable' overlay at 'overlays/default.nix'.
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
 
     # Home manager
@@ -25,25 +25,28 @@
     }@inputs:
     let
       inherit (self) outputs;
+      username = "ma-gerbig";
 
-      # Supported systems for your flake packages, shell, etc.
-      systems = [
-        "aarch64-linux"
-        "x86_64-linux"
-      ];
-      # This is a function that generates an attribute by calling a function you
-      # pass to it, with each system as an argument
-      forAllSystems = nixpkgs.lib.genAttrs systems;
+      libFlake = import ./lib/flake-helpers.nix {
+        inherit
+          self
+          inputs
+          outputs
+          username
+          ;
+      };
+      libx = import ./lib { inherit nixpkgs; };
+
     in
     {
       # Your custom packages
       # Accessible through 'nix build', 'nix shell', etc
-      packages = forAllSystems (system: import ./pkgs nixpkgs.legacyPackages.${system});
+      packages = libFlake.forAllSystems (system: import ./pkgs nixpkgs.legacyPackages.${system});
       # Formatter for your nix files, available through 'nix fmt'
       # Other options beside 'alejandra' include 'nixpkgs-fmt'
-      formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.nixfmt-rfc-style);
+      formatter = libFlake.forAllSystems (system: nixpkgs.legacyPackages.${system}.nixfmt-rfc-style);
 
-      devShells = forAllSystems (system: import ./shell.nix nixpkgs.legacyPackages.${system});
+      devShells = libFlake.forAllSystems (system: import ./shell.nix nixpkgs.legacyPackages.${system});
 
       # Your custom packages and modifications, exported as overlays
       overlays = import ./overlays { inherit inputs; };
@@ -57,25 +60,19 @@
       # NixOS configuration entrypoint
       # Available through 'nixos-rebuild --flake .#your-hostname'
       nixosConfigurations = {
-        NixosVM = nixpkgs.lib.nixosSystem {
-          specialArgs = { inherit inputs outputs; };
-          modules = [
-            # > Our main nixos configuration file <
-            ./hosts/configuration.nix
-          ];
+        # Desktop machines
+        NixosVM = libFlake.mkHost {
+          hostname = "NixosVM";
+          desktop = "plasma";
         };
       };
 
       # Standalone home-manager configuration entrypoint
       # Available through 'home-manager --flake .#your-username@your-hostname'
       homeConfigurations = {
-        "ma-gerbig@NixosVM" = home-manager.lib.homeManagerConfiguration {
-          pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
-          extraSpecialArgs = { inherit inputs outputs; };
-          modules = [
-            # > Our main home-manager configuration file <
-            ./home/home.nix
-          ];
+        "${username}@NixosVM" = libFlake.mkHome {
+          hostname = "NixosVM";
+          desktop = "plasma";
         };
       };
     };
