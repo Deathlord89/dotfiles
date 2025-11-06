@@ -2,16 +2,22 @@
   description = "My NixOS configuration";
 
   inputs = {
-    # NixOS Stable
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-25.05";
+    # NixOS Unstable
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
-    # NixOS Unstable - also see the 'stable-unstable' overlay at 'overlays/default.nix'.
-    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
+    # NixOS Stable - also see the 'stable-unstable' overlay at 'overlays/default.nix'.
+    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-25.05";
 
-    # Home manager
+    # Home Manager
     home-manager = {
-      url = "github:nix-community/home-manager/release-25.05";
+      url = "github:nix-community/home-manager/";
       inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    # Home Manager Stable
+    home-manager-stable = {
+      url = "github:nix-community/home-manager/release-25.05";
+      inputs.nixpkgs.follows = "nixpkgs-stable";
     };
   };
 
@@ -19,7 +25,7 @@
     {
       self,
       nixpkgs,
-      nixpkgs-unstable,
+      nixpkgs-stable,
       home-manager,
       ...
     }@inputs:
@@ -64,6 +70,7 @@
         NixosVM = libFlake.mkHost {
           hostname = "NixosVM";
           desktop = "plasma";
+          pkgsInput = nixpkgs-stable;
         };
       };
 
@@ -73,6 +80,7 @@
         "${username}@NixosVM" = libFlake.mkHome {
           hostname = "NixosVM";
           desktop = "plasma";
+          pkgsInput = nixpkgs-stable;
         };
       };
     };

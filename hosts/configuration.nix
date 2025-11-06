@@ -50,26 +50,37 @@
     };
   };
 
-  nix =
-    let
-      flakeInputs = lib.filterAttrs (_: lib.isType "flake") inputs;
-    in
-    {
-      settings = {
-        # Enable flakes and new 'nix' command
-        experimental-features = "nix-command flakes";
-        # Opinionated: disable global registry
-        flake-registry = "";
-        # Workaround for https://github.com/NixOS/nix/issues/9574
-        nix-path = config.nix.nixPath;
-      };
-      # Opinionated: disable channels
-      channel.enable = false;
+  nix = {
+    # This will add each flake input as a registry
+    # To make nix3 commands consistent with your flake
+    registry = lib.mkForce (lib.mapAttrs (_: value: { flake = value; }) inputs);
 
-      # Opinionated: make flake registry and nix path match flake inputs
-      registry = lib.mapAttrs (_: flake: { inherit flake; }) flakeInputs;
-      nixPath = lib.mapAttrsToList (n: _: "${n}=flake:${n}") flakeInputs;
+    # This will additionally add your inputs to the system's legacy channels
+    # Making legacy nix commands consistent as well, awesome!
+    nixPath = lib.mkForce (
+      lib.mapAttrsToList (key: value: "${key}=${value.to.path}") config.nix.registry
+    );
+
+    # Automatically run the nix store optimiser at a specific time.
+    optimise.automatic = true;
+
+    settings = {
+      # Automatically optimise store after rebuild
+      auto-optimise-store = true;
+
+      experimental-features = [
+        "nix-command"
+        "flakes"
+      ];
+      trusted-users = [
+        "root"
+        "@wheel"
+      ];
+
+      substituters = [ "https://cache.garnix.io" ];
+      trusted-public-keys = [ "cache.garnix.io:CTFPyKSLcx5RMJKfLo5EEPUObbA78b0YQ2DTCJXqr9g=" ];
     };
+  };
 
   # Add the rest of your current configuration
 

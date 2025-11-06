@@ -12,10 +12,14 @@
       hostname,
       user ? username,
       desktop ? null,
+      pkgsInput ? inputs.nixpkgs,
       system ? "x86_64-linux",
+      homeManagerInput ? (
+        if pkgsInput == inputs.nixpkgs-stable then inputs.home-manager-stable else inputs.home-manager
+      ),
     }:
-    inputs.home-manager.lib.homeManagerConfiguration {
-      pkgs = inputs.nixpkgs.legacyPackages.${system};
+    homeManagerInput.lib.homeManagerConfiguration {
+      pkgs = pkgsInput.legacyPackages.${system};
       extraSpecialArgs = {
         inherit
           self
