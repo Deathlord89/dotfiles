@@ -1,11 +1,11 @@
 # This is your home-manager configuration file
 # Use this to configure your home environment (it replaces ~/.config/nixpkgs/home.nix)
 {
-  inputs,
-  outputs,
   lib,
-  config,
+  outputs,
   pkgs,
+  stateVersion,
+  username,
   ...
 }:
 {
@@ -21,6 +21,15 @@
     ./git.nix
     ./gpg.nix
   ];
+
+  home = {
+    inherit username stateVersion;
+    homeDirectory = "/home/${username}";
+    sessionVariables = {
+      EDITOR = "nvim";
+      NH_FLAKE = "$HOME/git/dotfiles";
+    };
+  };
 
   nixpkgs = {
     # You can add overlays here
@@ -47,16 +56,6 @@
     };
   };
 
-  # Set your username
-  home = {
-    username = "ma-gerbig";
-    homeDirectory = "/home/ma-gerbig";
-    sessionVariables = {
-      EDITOR = "nvim";
-      NH_FLAKE = "$HOME/git/dotfiles";
-    };
-  };
-
   # Add stuff for your user as you see fit:
   programs.neovim.enable = true;
   home.packages = with pkgs; [ lazygit ];
@@ -68,10 +67,10 @@
     enable = true;
     enableCompletion = true;
   };
+  programs.fish = {
+    enable = true;
+  };
 
   # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";
-
-  # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
-  home.stateVersion = "25.05";
 }

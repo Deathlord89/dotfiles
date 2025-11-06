@@ -1,7 +1,9 @@
 {
-  self,
   inputs,
+  libx,
   outputs,
+  self,
+  stateVersion,
   username,
   ...
 }:
@@ -22,11 +24,13 @@
       pkgs = pkgsInput.legacyPackages.${system};
       extraSpecialArgs = {
         inherit
-          self
-          inputs
-          outputs
-          hostname
           desktop
+          hostname
+          inputs
+          libx
+          outputs
+          self
+          stateVersion
           ;
         username = user;
       };
@@ -45,16 +49,18 @@
     pkgsInput.lib.nixosSystem {
       specialArgs = {
         inherit
-          self
-          inputs
-          outputs
-          username
-          hostname
           desktop
+          hostname
+          inputs
+          libx
+          outputs
+          self
+          stateVersion
+          username
           ;
       };
       modules = [
-        ../hosts/configuration.nix
+        ../hosts
       ];
     };
 

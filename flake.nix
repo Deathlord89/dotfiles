@@ -32,16 +32,19 @@
     let
       inherit (self) outputs;
       username = "ma-gerbig";
+      stateVersion = "24.05";
 
+      libx = import ./lib { inherit nixpkgs; };
       libFlake = import ./lib/flake-helpers.nix {
         inherit
-          self
           inputs
+          libx
           outputs
+          self
+          stateVersion
           username
           ;
       };
-      libx = import ./lib { inherit nixpkgs; };
 
     in
     {
