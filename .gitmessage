@@ -33,4 +33,4 @@
 # Lines starting with '#' are ignored and used only for guidance.
 
 # How to use:
-# git config commit.template .gitmessage 
+# git config commit.template .gitmessage
