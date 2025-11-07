@@ -6,7 +6,7 @@
 {
   imports = [
     (modulesPath + "/profiles/qemu-guest.nix")
-    (import ./disks.nix { inherit lib; })
+    ./disks.nix
 
     ../common/hardware/yubikey.nix
   ];
