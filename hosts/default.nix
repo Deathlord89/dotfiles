@@ -20,6 +20,8 @@
     ./common/base
     ./common/users/${username}
   ]
+  # Include custom nixos modules
+  ++ (builtins.attrValues outputs.nixosModules)
   # Include host specific additional settings
   ++ lib.optional (builtins.pathExists (./. + "/${hostname}/extra.nix")) ./${hostname}/extra.nix
   # Include host specific services if defined

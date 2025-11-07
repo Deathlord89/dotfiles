@@ -2,11 +2,10 @@
   hostname,
   lib,
   libx,
-  outputs,
   ...
 }:
 {
-  imports = libx.scanPaths ./. ++ (builtins.attrValues outputs.nixosModules);
+  imports = libx.scanPaths ./.;
 
   networking = {
     hostName = hostname;

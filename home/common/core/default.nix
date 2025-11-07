@@ -1,11 +1,10 @@
 {
   libx,
-  outputs,
   pkgs,
   ...
 }:
 {
-  imports = libx.scanPaths ./. ++ (builtins.attrValues outputs.nixosModules);
+  imports = libx.scanPaths ./.;
 
   programs = {
     # Enable home-manager
