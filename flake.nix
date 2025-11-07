@@ -19,6 +19,12 @@
       url = "github:nix-community/home-manager/release-25.05";
       inputs.nixpkgs.follows = "nixpkgs-stable";
     };
+
+    # add git hooks to format nix code before commit
+    pre-commit-hooks = {
+      url = "github:cachix/git-hooks.nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -26,7 +32,6 @@
       self,
       nixpkgs,
       nixpkgs-stable,
-      home-manager,
       ...
     }@inputs:
     let
@@ -51,11 +56,26 @@
       # Your custom packages
       # Accessible through 'nix build', 'nix shell', etc
       packages = libFlake.forAllSystems (system: import ./pkgs nixpkgs.legacyPackages.${system});
+
       # Formatter for your nix files, available through 'nix fmt'
-      # Other options beside 'alejandra' include 'nixpkgs-fmt'
       formatter = libFlake.forAllSystems (system: nixpkgs.legacyPackages.${system}.nixfmt-rfc-style);
 
-      devShells = libFlake.forAllSystems (system: import ./shell.nix nixpkgs.legacyPackages.${system});
+      # Pre-commit checks
+      checks = libFlake.forAllSystems (
+        system:
+        let
+          pkgs = nixpkgs.legacyPackages.${system};
+        in
+        import ./checks.nix { inherit inputs system pkgs; }
+      );
+
+      devShells = libFlake.forAllSystems (
+        system:
+        import ./shell.nix {
+          pkgs = nixpkgs.legacyPackages.${system};
+          checks = self.checks.${system};
+        }
+      );
 
       # Your custom packages and modifications, exported as overlays
       overlays = import ./overlays { inherit inputs; };

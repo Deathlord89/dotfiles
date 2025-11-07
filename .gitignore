@@ -4,3 +4,7 @@ result-*
 
 # Ignore automatically generated direnv output
 .direnv
+
+# Ignore automatically generated git-commit-hook configuration
+.pre-commit-config.yaml
+
