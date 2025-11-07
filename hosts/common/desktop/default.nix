@@ -1,7 +1,12 @@
-{ desktop, ... }:
+{
+  desktop,
+  lib,
+  ...
+}:
 {
   imports = [
     (./. + "/${desktop}.nix")
+    ./25.05-compat.nix
   ];
 
   # Quiet boot with plymouth - supports LUKS passphrase entry if needed
@@ -18,10 +23,14 @@
 
   hardware.graphics.enable = true;
 
-  # Configure keymap in X11
-  services.xserver.xkb = {
-    layout = "de";
-    variant = "";
+  services.xserver = {
+    # Enable the X11 windowing system.
+    enable = lib.mkDefault false;
+    # Configure keymap in X11
+    xkb = {
+      layout = "de";
+      variant = "";
+    };
   };
 
   environment = {
