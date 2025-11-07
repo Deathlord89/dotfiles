@@ -1,14 +1,14 @@
-# This is your home-manager configuration file
-# Use this to configure your home environment (it replaces ~/.config/nixpkgs/home.nix)
 {
+  lib,
+  desktop,
   outputs,
-  pkgs,
   stateVersion,
   username,
   ...
 }:
 {
-  # You can import other home-manager modules here
+  # Only import desktop configuration if the host is desktop enabled
+  # Only import user specific configuration if they have bespoke settings
   imports = [
     # If you want to use modules your own flake exports (from modules/home-manager):
     # outputs.homeManagerModules.example
@@ -17,9 +17,12 @@
     # inputs.nix-colors.homeManagerModules.default
 
     # You can also split up your configuration and import pieces of it here:
-    ./git.nix
-    ./gpg.nix
-  ];
+    ./common/core
+  ]
+  ++ lib.optional (builtins.isString desktop) ./common/desktop
+  ++ lib.optional (builtins.pathExists (
+    ./. + "/common/users/${username}"
+  )) ./common/users/${username};
 
   home = {
     inherit username stateVersion;
@@ -53,21 +56,6 @@
       # Disable if you don't want unfree packages
       allowUnfree = true;
     };
-  };
-
-  # Add stuff for your user as you see fit:
-  programs.neovim.enable = true;
-  home.packages = with pkgs; [ lazygit ];
-
-  # Enable home-manager and git
-  programs.home-manager.enable = true;
-  programs.git.enable = true;
-  programs.bash = {
-    enable = true;
-    enableCompletion = true;
-  };
-  programs.fish = {
-    enable = true;
   };
 
   # Nicely reload system units when changing configs

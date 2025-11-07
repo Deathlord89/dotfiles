@@ -1,6 +1,7 @@
 {
-  pkgs,
   config,
+  libx,
+  pkgs,
   ...
 }:
 {
@@ -9,7 +10,7 @@
       enable = true;
       publicKeys = [
         {
-          source = ./gpg.asc;
+          source = libx.relativeToRoot "home/ma-gerbig/gpg.asc";
           trust = 5;
         }
       ];

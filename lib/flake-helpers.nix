@@ -35,7 +35,7 @@
         username = user;
       };
       modules = [
-        ../home/home.nix
+        ../home
       ];
     };
 
