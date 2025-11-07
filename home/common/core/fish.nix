@@ -8,6 +8,7 @@
       cat = "bat";
       gst = "git status -sb";
       neofetch = "fastfetch";
+      tree = "eza --tree";
     };
   };
 }
