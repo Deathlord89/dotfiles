@@ -46,6 +46,7 @@
 
       # ========== nix ==========
       nixfmt-rfc-style.enable = true;
+      statix.enable = true;
       deadnix = {
         enable = true;
         settings = {
