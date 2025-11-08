@@ -1,3 +1,4 @@
+{ pkgs, ... }:
 {
   programs.fish = {
     enable = true;
@@ -5,10 +6,25 @@
       set fish_greeting ""
     '';
     shellAliases = {
-      cat = "bat";
-      gst = "git status -sb";
-      neofetch = "fastfetch";
       tree = "eza --tree";
+      neofetch = "fastfetch";
+      gst = "git status -sb";
+      cat = "bat";
     };
+    plugins = [
+      {
+        name = "autopair";
+        inherit (pkgs.fishPlugins.autopair) src;
+      }
+      {
+        name = "fzf-fish";
+        inherit (pkgs.fishPlugins.fzf-fish) src;
+      }
+      {
+        name = "puffer";
+        inherit (pkgs.fishPlugins.puffer) src;
+      }
+    ];
+
   };
 }
