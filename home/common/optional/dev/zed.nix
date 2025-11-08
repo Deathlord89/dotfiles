@@ -44,6 +44,7 @@ in
         };
         toolbar = {
           breadcrumbs = true;
+          agent_review = false;
           quick_actions = true;
         };
         tabs = {
@@ -56,6 +57,7 @@ in
           show_parameter_hints = true;
           show_other_hints = true;
         };
+        disable_ai = true;
         telemetry = {
           diagnostics = false;
           metrics = false;
