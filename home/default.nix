@@ -1,6 +1,6 @@
 {
-  lib,
   desktop,
+  lib,
   outputs,
   stateVersion,
   username,

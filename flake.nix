@@ -29,9 +29,9 @@
 
   outputs =
     {
-      self,
-      nixpkgs,
       nixpkgs-stable,
+      nixpkgs,
+      self,
       ...
     }@inputs:
     let

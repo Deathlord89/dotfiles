@@ -1,4 +1,8 @@
-{ hostname, lib, ... }:
+{
+  hostname,
+  lib,
+  ...
+}:
 {
   # Import host specific coinfigurations
   imports = lib.optional (builtins.pathExists (

@@ -1,8 +1,8 @@
 # Shell for bootstrapping flake-enabled nix and home-manager
 # You can enter it through 'nix develop' or (legacy) 'nix-shell'
 {
-  pkgs ? import <nixpkgs> { },
   checks,
+  pkgs ? import <nixpkgs> { },
   ...
 }:
 {
@@ -12,14 +12,14 @@
     # Enable experimental features without having to specify the argument
     NIX_CONFIG = "experimental-features = nix-command flakes";
     nativeBuildInputs = with pkgs; [
-      nix
-      home-manager
       git
+      home-manager
+      nix
 
+      age
+      gnupg
       sops
       ssh-to-age
-      gnupg
-      age
     ];
   };
 }
