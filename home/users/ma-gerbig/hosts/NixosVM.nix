@@ -1,6 +1,7 @@
 {
   optional = {
     dev = {
+      vscode.enable = true;
       zed.enable = true;
     };
   };
