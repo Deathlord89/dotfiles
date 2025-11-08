@@ -1,5 +1,5 @@
 {
-  config,
+  desktop,
   libx,
   pkgs,
   ...
@@ -33,7 +33,7 @@
       enableFishIntegration = true;
       enableSshSupport = true;
       enableScDaemon = true;
-      pinentry.package = if config.gtk.enable then pkgs.pinentry-gnome3 else pkgs.pinentry-qt;
+      pinentry.package = if desktop == "gnome" then pkgs.pinentry-gnome3 else pkgs.pinentry-qt;
       defaultCacheTtl = 60;
       maxCacheTtlSsh = 120;
     };
