@@ -10,7 +10,7 @@
       enable = true;
       publicKeys = [
         {
-          source = libx.relativeToRoot "home/ma-gerbig/gpg.asc";
+          source = libx.relativeToRoot "home/users/ma-gerbig/gpg.asc";
           trust = 5;
         }
       ];

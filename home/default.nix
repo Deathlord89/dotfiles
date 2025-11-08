@@ -18,15 +18,14 @@
 
     # You can also split up your configuration and import pieces of it here:
     ./common/core
+    ./common/optional
   ]
   # Include custom nixos modules
   ++ (builtins.attrValues outputs.homeManagerModules)
   # Include desktop config if a desktop is defined
   ++ lib.optional (builtins.isString desktop) ./common/desktop
   # Include user specific settings
-  ++ lib.optional (builtins.pathExists (
-    ./. + "/common/users/${username}"
-  )) ./common/users/${username};
+  ++ lib.optional (builtins.pathExists (./. + "/users/${username}")) ./users/${username};
 
   home = {
     inherit username stateVersion;
