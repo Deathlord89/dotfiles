@@ -1,6 +1,9 @@
 {
   config,
+  lib,
+  libx,
   pkgs,
+  sopsFolder,
   ...
 }:
 let
@@ -13,19 +16,29 @@ in
     shell = pkgs.fish;
     extraGroups = [
       "audio"
-      "networkmanager"
       "users"
       "video"
       "wheel"
     ]
     ++ ifExists [
+      "networkmanager"
       "gamemode"
       "libvirtd"
     ];
 
-    openssh.authorizedKeys.keys = [
-    ];
+    hashedPasswordFile = config.sops.secrets."ma-gerbig/password".path;
+
+    openssh.authorizedKeys.keys = lib.splitString "\n" (
+      builtins.readFile (libx.relativeToRoot "home/users/ma-gerbig/ssh.pub")
+    );
 
     packages = [ pkgs.home-manager ];
+  };
+
+  sops.secrets = {
+    "ma-gerbig/password" = {
+      neededForUsers = true;
+      sopsFile = "${sopsFolder}/shared.yaml";
+    };
   };
 }
