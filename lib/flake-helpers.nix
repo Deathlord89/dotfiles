@@ -7,6 +7,9 @@
   username,
   ...
 }:
+let
+  sopsFolder = builtins.toString inputs.nix-secrets + "/sops";
+in
 {
   # Helper function for generating home-manager configs
   mkHome =
@@ -55,11 +58,13 @@
           libx
           outputs
           self
+          sopsFolder
           stateVersion
           username
           ;
       };
       modules = [
+        inputs.sops-nix.nixosModules.sops
         ../hosts
       ];
     };
