@@ -143,10 +143,10 @@
         "systems": "systems"
       },
       "locked": {
-        "lastModified": 1762703989,
-        "narHash": "sha256-4PIBeLUZYTOhivM3u/JnbVkjLqcrCmO979rFgDf2VPA=",
+        "lastModified": 1762713955,
+        "narHash": "sha256-b469zi7I/PN0IzWLewJbTqZaZwtAPSMPuUxoxatKRqM=",
         "ref": "refs/heads/main",
-        "rev": "4685604d9ff80dff37dcde92cbaf9ac247df8cb3",
+        "rev": "645067181eb9e058305bc53d536ea752f6ed1260",
         "shallow": true,
         "type": "git",
         "url": "ssh://git@github.com/Deathlord89/nix-secrets"
