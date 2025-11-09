@@ -8,6 +8,13 @@
     # NixOS Stable - also see the 'stable-unstable' overlay at 'overlays/default.nix'.
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-25.05";
 
+    # A collection of NixOS modules covering hardware quirks
+    nixos-hardware.url = "github:nixos/nixos-hardware/master";
+
+    # Bleeding edge packages from chaotic nyx, especially CachyOS kernel
+    # Don't add follows nixpkgs, else will cause local rebuilds
+    chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
+
     # Home Manager
     home-manager = {
       url = "github:nix-community/home-manager/";

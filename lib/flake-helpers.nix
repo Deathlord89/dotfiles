@@ -64,6 +64,7 @@ in
           ;
       };
       modules = [
+        inputs.chaotic.nixosModules.default
         inputs.sops-nix.nixosModules.sops
         ../hosts
       ];
