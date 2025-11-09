@@ -17,13 +17,12 @@
     # inputs.nix-colors.homeManagerModules.default
 
     # You can also split up your configuration and import pieces of it here:
-    ./common/core
-    ./common/optional
+    ./cli
   ]
   # Include custom nixos modules
   ++ (builtins.attrValues outputs.homeManagerModules)
   # Include desktop config if a desktop is defined
-  ++ lib.optional (builtins.isString desktop) ./common/desktop
+  ++ lib.optional (builtins.isString desktop) ./desktop
   # Include user specific settings
   ++ lib.optional (builtins.pathExists (./. + "/users/${username}")) ./users/${username};
 
