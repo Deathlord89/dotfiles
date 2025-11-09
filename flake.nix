@@ -27,6 +27,12 @@
       inputs.nixpkgs.follows = "nixpkgs-stable";
     };
 
+    # Declarative disk partitioning
+    disko = {
+      url = "github:nix-community/disko";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # Secrets management
     sops-nix = {
       url = "github:mic92/sops-nix";
