@@ -65,6 +65,7 @@ in
       };
       modules = [
         inputs.chaotic.nixosModules.default
+        inputs.lanzaboote.nixosModules.lanzaboote
         inputs.sops-nix.nixosModules.sops
         ../hosts
       ];

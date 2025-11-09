@@ -18,6 +18,7 @@
     (./. + "/${hostname}/hardware.nix")
 
     ./common/base
+    ./common/optional
     ./common/users/${username}
   ]
   # Include custom nixos modules
