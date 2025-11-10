@@ -1,4 +1,8 @@
-{ lib, ... }:
+{
+  lib,
+  pkgs,
+  ...
+}:
 {
   programs.starship = {
     enable = true;
@@ -235,4 +239,5 @@
       };
     };
   };
+  home.packages = [ pkgs.nerd-fonts.symbols-only ];
 }
