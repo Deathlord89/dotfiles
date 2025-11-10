@@ -129,6 +129,11 @@
           desktop = "plasma";
           pkgsInput = nixpkgs-stable;
         };
+
+        T460p = libFlake.mkHost {
+          hostname = "T460p";
+          desktop = "gnome";
+        };
       };
 
       # Standalone home-manager configuration entrypoint
@@ -138,6 +143,11 @@
           hostname = "NixosVM";
           desktop = "plasma";
           pkgsInput = nixpkgs-stable;
+        };
+
+        "${username}@T460p" = libFlake.mkHome {
+          hostname = "T460p";
+          desktop = "gnome";
         };
       };
     };
