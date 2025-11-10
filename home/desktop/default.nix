@@ -7,6 +7,7 @@
 {
   imports = [
     ./core
+    ./optional
   ]
   ++ lib.optional (builtins.pathExists (./. + "/${desktop}")) ./${desktop};
 
@@ -16,8 +17,9 @@
     mediainfo
     mediainfo-gui
     qownnotes
-    thunderbird
     zotero
+    bitwarden-desktop
+    nextcloud-client
   ];
 
 }
