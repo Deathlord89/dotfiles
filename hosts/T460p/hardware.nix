@@ -12,8 +12,8 @@
     inputs.nixos-hardware.nixosModules.common-pc-ssd
     inputs.nixos-hardware.nixosModules.lenovo-thinkpad-t460p
 
-    #../common/hardware/nvidia
-    #../common/hardware/nvidia/optimus.nix
+    ../common/hardware/nvidia
+    ../common/hardware/nvidia/optimus.nix
     ../common/hardware/yubikey.nix
   ];
 

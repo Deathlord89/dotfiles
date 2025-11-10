@@ -2,6 +2,7 @@
   hostname,
   lib,
   libx,
+  pkgs,
   ...
 }:
 {
@@ -15,7 +16,8 @@
     networkmanager.enable = true;
   };
 
-  programs = {
-    fish.enable = true;
-  };
+  environment.systemPackages = [ pkgs.git ];
+
+  programs.fish.enable = true;
+
 }
