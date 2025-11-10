@@ -8,7 +8,7 @@ let
 in
 {
   options.optional.secureboot = {
-    enable = lib.mkEnableOption "Enable lutris games manager";
+    enable = lib.mkEnableOption "Enable Lanzaboote Secureboot";
   };
 
   config = lib.mkIf cfg.enable {
