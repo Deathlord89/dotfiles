@@ -31,7 +31,7 @@
     homeDirectory = "/home/${username}";
     sessionVariables = {
       EDITOR = "nvim";
-      NH_FLAKE = "$HOME/git/dotfiles";
+      NH_FLAKE = "$HOME/.dotfiles";
     };
   };
 
