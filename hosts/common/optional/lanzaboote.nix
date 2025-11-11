@@ -12,7 +12,6 @@ in
   };
 
   config = lib.mkIf cfg.enable {
-
     # sbctl - a frontend to create, enroll manage keys
     # just need once for importing secureboot keys
     # Spawnm a shell with `nix run -p sbctl`
@@ -28,7 +27,7 @@ in
 
       lanzaboote = {
         enable = true;
-        pkiBundle = "/etc/secureboot";
+        pkiBundle = "/var/lib/sbctl";
       };
     };
   };

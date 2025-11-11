@@ -5,4 +5,6 @@
     secureboot.enable = true;
     wireless.enable = true;
   };
+
+  services.xserver.enable = true;
 }

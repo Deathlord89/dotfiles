@@ -16,8 +16,14 @@
     networkmanager.enable = true;
   };
 
-  environment.systemPackages = [ pkgs.git ];
+  environment.systemPackages = with pkgs; [
+    curl
+    wget
+    lm_sensors
+    pciutils
+    usbutils
+    git
+  ];
 
   programs.fish.enable = true;
-
 }
