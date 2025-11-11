@@ -1,53 +1,71 @@
 {
   disko.devices = {
     disk = {
-      main = {
+      root_drive = {
+        device = "/dev/disk/by-id/ata-SAMSUNG_MZ7LN256HCHP-000L7_S20HNAAH252197";
         type = "disk";
-        device = "/dev/sda";
         content = {
           type = "gpt";
           partitions = {
             ESP = {
-              size = "256M";
+              name = "ESP";
+              size = "1G";
               type = "EF00";
               content = {
                 type = "filesystem";
                 format = "vfat";
                 mountpoint = "/boot";
-                mountOptions = [
-                  "defaults"
-                ];
+                mountOptions = [ "umask=0077" ];
               };
             };
-            luks = {
+            ROOT = {
               size = "100%";
               content = {
                 type = "luks";
-                name = "crypted";
+                name = "cryptroot";
                 # Path to the file which contains the password for initial encryption
                 # if you want to use the key for interactive login be sure there is no trailing newline
                 # for example use `echo -n "password" > /tmp/secret.key`
                 passwordFile = "/tmp/secret.key";
                 settings = {
-                  allowDiscards = true;
                   # disable settings.keyFile if you want to use interactive password entry
                   # keyFile = "/tmp/secret.key";
+                  allowDiscards = true;
                 };
                 content = {
                   type = "btrfs";
-                  # Override existing partition
-                  extraArgs = [ "-f" ];
+                  extraArgs = [ "-f" ]; # Override existing partition
                   subvolumes = {
-                    "/root" = {
+                    "@" = {
                       mountpoint = "/";
-                      mountOptions = [ "compress=zstd" ];
+                      mountOptions = [
+                        "compress=zstd"
+                        "noatime"
+                      ];
                     };
-                    "/home" = {
+                    "@home" = {
                       mountpoint = "/home";
-                      mountOptions = [ "compress=zstd" ];
+                      mountOptions = [
+                        "compress=zstd"
+                        "noatime"
+                      ];
                     };
-                    "/nix" = {
+                    "@nix" = {
                       mountpoint = "/nix";
+                      mountOptions = [
+                        "compress=zstd"
+                        "noatime"
+                      ];
+                    };
+                    "@log" = {
+                      mountpoint = "/var/log";
+                      mountOptions = [
+                        "compress=zstd"
+                        "noatime"
+                      ];
+                    };
+                    "@lib" = {
+                      mountpoint = "/var/lib";
                       mountOptions = [
                         "compress=zstd"
                         "noatime"
