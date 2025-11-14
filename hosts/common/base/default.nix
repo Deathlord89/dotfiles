@@ -18,11 +18,11 @@
 
   environment.systemPackages = with pkgs; [
     curl
-    wget
+    git
     lm_sensors
     pciutils
     usbutils
-    git
+    wget
   ];
 
   programs.fish.enable = true;
