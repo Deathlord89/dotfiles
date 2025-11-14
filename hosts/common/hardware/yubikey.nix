@@ -41,7 +41,7 @@ in
         enable = true;
         settings = {
           cue = true; # tells the user to press the button
-          authFile = "${u2fFile}/";
+          authFile = "${u2fFile}";
         };
       };
       services = {
@@ -51,10 +51,10 @@ in
     };
 
     services = {
-      gnome.gcr-ssh-agent.enable = true;
+      gnome.gcr-ssh-agent.enable = lib.mkForce false;
       pcscd.enable = true;
       udev.packages = with pkgs; [
-        yubikey-personalization
+        yubikey-personalization # End of Life at 2026-02-19
       ];
     };
   };
