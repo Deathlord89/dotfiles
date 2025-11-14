@@ -1,5 +1,6 @@
 # Reference:
 # https://rzetterberg.github.io/yubikey-gpg-nixos.html
+# https://joinemm.dev/blog/yubikey-nixos-guide
 {
   lib,
   pkgs,
@@ -36,11 +37,14 @@ in
       pam_u2f # yubikey with sudo
     ];
 
+    # First key: pamu2fcfg -u <username> -o pam://yubikey > u2f_keys
+    # Additional keys: pamu2fcfg -n -o pam://yubikey >> u2f_keys
     security.pam = lib.optionalAttrs pkgs.stdenv.isLinux {
       u2f = {
         enable = true;
         settings = {
           cue = true; # tells the user to press the button
+          origin = "pam://yubikey";
           authFile = "${u2fFile}";
         };
       };
