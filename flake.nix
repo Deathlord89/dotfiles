@@ -144,7 +144,7 @@
       # Standalone home-manager configuration entrypoint
       # Available through 'home-manager --flake .#your-username@your-hostname'
       homeConfigurations = {
-        "${username}@T460p" = libFlake.mkHome {
+        "${username}@NitroX" = libFlake.mkHome {
           hostname = "T460p";
           desktop = "gnome";
         };
