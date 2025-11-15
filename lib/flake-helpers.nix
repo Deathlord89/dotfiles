@@ -38,6 +38,7 @@ in
         username = user;
       };
       modules = [
+        inputs.stylix.homeModules.stylix
         ../home
       ];
     };
