@@ -2,6 +2,7 @@
   config,
   lib,
   pkgs,
+  sopsFolder,
   ...
 }:
 let
@@ -14,8 +15,11 @@ in
 
   config = lib.mkIf cfg.enable {
     sops.secrets = {
-      "restic_pass" = { };
+      "restic_pass" = {
+        sopsFile = "${sopsFolder}/shared.yaml";
+      };
       "rclone_conf" = {
+        sopsFile = "${sopsFolder}/shared.yaml";
         path = "/root/.config/rclone/rclone.conf";
       };
     };
