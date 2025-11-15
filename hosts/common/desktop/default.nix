@@ -8,6 +8,8 @@
   imports = [
     (./. + "/${desktop}.nix")
     ./25.05-compat.nix
+
+    ../hardware/printer.nix
   ];
 
   # Quiet boot with plymouth - supports LUKS passphrase entry if needed
