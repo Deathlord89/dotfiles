@@ -1,8 +1,10 @@
 {
-  imports = [
-    ../../common/optional/syncthing.nix
-  ];
+  # Enable syncthing globaly
+  optional = {
+    syncthing.enable = true;
+  };
 
+  # Host specific eettings
   services = {
     syncthing = {
       settings = {
