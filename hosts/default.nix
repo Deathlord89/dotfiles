@@ -6,6 +6,7 @@
   lib,
   modulesPath,
   outputs,
+  sopsFolder,
   stateVersion,
   username,
   ...
@@ -83,7 +84,11 @@
       substituters = [ "https://cache.garnix.io" ];
       trusted-public-keys = [ "cache.garnix.io:CTFPyKSLcx5RMJKfLo5EEPUObbA78b0YQ2DTCJXqr9g=" ];
     };
+
+    extraOptions = "!include ${config.sops.secrets."tokens/nix-access-tokens".path}";
   };
+
+  sops.secrets."tokens/nix-access-tokens".sopsFile = "${sopsFolder}/shared.yaml";
 
   system = {
     inherit stateVersion;
