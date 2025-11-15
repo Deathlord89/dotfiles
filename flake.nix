@@ -124,6 +124,11 @@
       # Available through 'nixos-rebuild --flake .#your-hostname'
       nixosConfigurations = {
         # Desktop machines
+        NitroX = libFlake.mkHost {
+          hostname = "NitroX";
+          desktop = "gnome";
+        };
+
         NixosVM = libFlake.mkHost {
           hostname = "NixosVM";
           desktop = "plasma";
@@ -139,6 +144,11 @@
       # Standalone home-manager configuration entrypoint
       # Available through 'home-manager --flake .#your-username@your-hostname'
       homeConfigurations = {
+        "${username}@NitroX" = libFlake.mkHome {
+          hostname = "T460p";
+          desktop = "gnome";
+        };
+
         "${username}@NixosVM" = libFlake.mkHome {
           hostname = "NixosVM";
           desktop = "plasma";
