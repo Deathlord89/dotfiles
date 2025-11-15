@@ -1,6 +1,7 @@
 {
   desktop,
   lib,
+  pkgs,
   ...
 }:
 {
@@ -26,6 +27,8 @@
   services.xserver = {
     # Enable the X11 windowing system.
     enable = lib.mkDefault false;
+    # Exclude XTerm
+    excludePackages = [ pkgs.xterm ];
     # Configure keymap in X11
     xkb = {
       layout = "de";
