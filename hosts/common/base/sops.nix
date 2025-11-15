@@ -3,9 +3,6 @@
   sopsFolder,
   ...
 }:
-#let
-#  sopsFolder = builtins.toString inputs.nix-secrets + "/sops";
-#in
 {
   sops = {
     defaultSopsFile = "${sopsFolder}/${config.networking.hostName}.yaml";
