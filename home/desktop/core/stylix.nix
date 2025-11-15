@@ -30,6 +30,12 @@ in
     stylix = {
       enable = true;
       autoEnable = false;
+
+      targets = {
+        gtk.enable = true;
+        qt.enable = true;
+      };
+
       inherit (theme) polarity;
       #image = pkgs.fetchurl {
       #  url = theme.backgroundUrl;
