@@ -32,8 +32,8 @@ in
       autoEnable = false;
 
       targets = {
-        gtk.enable = true;
-        qt.enable = true;
+        gtk.enable = lib.mkDefault true;
+        qt.enable = lib.mkDefault true;
       };
 
       inherit (theme) polarity;

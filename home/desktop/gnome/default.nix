@@ -1,4 +1,9 @@
-{ pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 {
   gtk.enable = true;
 
@@ -128,5 +133,10 @@
         pop-shell
         user-themes
       ]);
+  };
+
+  stylix.targets = {
+    gtk = lib.mkIf config.optional.stylix.enable { enable = true; };
+    gnome = lib.mkIf config.optional.stylix.enable { enable = true; };
   };
 }
