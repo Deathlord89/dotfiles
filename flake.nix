@@ -155,7 +155,6 @@
         "${username}@NixosVM" = libFlake.mkHome {
           hostname = "NixosVM";
           desktop = "plasma";
-          pkgsInput = nixpkgs-stable;
         };
 
         "${username}@T460p" = libFlake.mkHome {
