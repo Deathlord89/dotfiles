@@ -148,7 +148,7 @@
       # Available through 'home-manager --flake .#your-username@your-hostname'
       homeConfigurations = {
         "${username}@NitroX" = libFlake.mkHome {
-          hostname = "T460p";
+          hostname = "NitroX";
           desktop = "gnome";
         };
 
