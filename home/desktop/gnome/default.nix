@@ -17,7 +17,7 @@
         "org.gnome.Nautilus.desktop"
         "firefox.desktop"
         "thunderbird.desktop"
-        "kitty.desktop"
+        "com.mitchellh.ghostty.desktop"
         "codium.desktop"
         "steam.desktop"
         "bitwarden.desktop"
