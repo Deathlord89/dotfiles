@@ -5,11 +5,11 @@
   ...
 }:
 let
-  cfg = config.optional.games.lutris;
+  cfg = config.optional.gaming.lutris;
 in
 {
-  options.optional.games.lutris = {
-    enable = lib.mkEnableOption "Enable lutris games manager";
+  options.optional.gaming.lutris = {
+    enable = lib.mkEnableOption "Enable Lutris games manager";
   };
 
   config = lib.mkIf cfg.enable {

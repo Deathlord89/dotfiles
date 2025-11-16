@@ -4,11 +4,11 @@
   ...
 }:
 let
-  cfg = config.optional.games.mangohud;
+  cfg = config.optional.gaming.mangohud;
 in
 {
-  options.optional.games.mangohud = {
-    enable = lib.mkEnableOption "Enable mangohud FPS overlay";
+  options.optional.gaming.mangohud = {
+    enable = lib.mkEnableOption "Enable Mangohud FPS overlay";
   };
 
   config = lib.mkIf cfg.enable {

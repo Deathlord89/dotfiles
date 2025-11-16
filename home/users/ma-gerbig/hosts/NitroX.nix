@@ -1,7 +1,7 @@
 {
   optional = {
     dev.vscode.enable = true;
-    optional.games = {
+    gaming = {
       lutris.enable = true;
       mangohud.enable = true;
       prismlauncher.enable = true;
