@@ -4,6 +4,7 @@
       vscode.enable = true;
       zed.enable = true;
     };
+    stylix.enable = false;
   };
 
   home.sessionVariables = {
