@@ -1,9 +1,14 @@
 {
   config,
   lib,
+  libx,
   pkgs,
   ...
 }:
+let
+  theme = import (libx.relativeToRoot "themes" + ("/" + config.optional.stylix.theme));
+  polarity = lib.toUpper (lib.substring 0 1 theme.polarity) + lib.substring 1 (-1) theme.polarity;
+in
 {
   gtk.enable = true;
 
@@ -133,6 +138,11 @@
         pop-shell
         user-themes
       ]);
+  };
+
+  gtk.iconTheme = {
+    name = "Papirus-${polarity}";
+    package = pkgs.papirus-icon-theme;
   };
 
   stylix.targets = {
