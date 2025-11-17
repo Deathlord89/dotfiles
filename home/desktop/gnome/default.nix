@@ -116,8 +116,8 @@ in
 
     "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0" = {
       binding = "<Ctrl><Alt>t";
-      command = "kitty";
-      name = "Kitty";
+      command = "ghostty";
+      name = "Ghostty";
     };
   };
 
