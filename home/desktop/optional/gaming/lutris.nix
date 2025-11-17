@@ -13,14 +13,17 @@ in
   };
 
   config = lib.mkIf cfg.enable {
-    home.packages = [
-      (pkgs.lutris.override {
-        extraPkgs = pkgs: [
-          pkgs.wineWowPackages.stableFull
-          #pkgs.wineWowPackages.stagingFull
-          pkgs.winetricks
-        ];
-      })
-    ];
+    programs.lutris = {
+      enable = true;
+      # steamPackage = osConfig.programs.steam.package;
+      steamPackage = pkgs.steam;
+      winePackages = [ pkgs.wineWowPackages.stableFull ];
+      extraPackages = with pkgs; [
+        umu-launcher
+        winetricks
+      ];
+      protonPackages = [ pkgs.unstable.proton-ge-bin ];
+      defaultWinePackage = pkgs.unstable.proton-ge-bin;
+    };
   };
 }

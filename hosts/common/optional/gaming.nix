@@ -45,7 +45,6 @@ in
     environment.systemPackages = with pkgs; [
       #ludusavi # Backing up your PC video game saves
       protonup-qt # Install and manage GE-Proton
-      umu-launcher # Make Steam Linux Runtime available outside of Steam
     ];
 
     # Enable 32 bit OpenGL
