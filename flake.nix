@@ -129,6 +129,11 @@
       # Available through 'nixos-rebuild --flake .#your-hostname'
       nixosConfigurations = {
         # Desktop machines
+        NAZGUL = libFlake.mkHost {
+          hostname = "NAZGUL";
+          pkgsInput = nixpkgs-stable;
+        };
+
         NitroX = libFlake.mkHost {
           hostname = "NitroX";
           desktop = "gnome";
@@ -149,6 +154,10 @@
       # Standalone home-manager configuration entrypoint
       # Available through 'home-manager --flake .#your-username@your-hostname'
       homeConfigurations = {
+        "${username}@NAZGUL" = libFlake.mkHome {
+          hostname = "NAZGUL";
+        };
+
         "${username}@NitroX" = libFlake.mkHome {
           hostname = "NitroX";
           desktop = "gnome";
