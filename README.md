@@ -8,7 +8,7 @@
 </div>
 
 
-A reproducible setup for my personal NixOS and Home-Manager environment, fully managed through flakes.
+A reproducible setup for my personal NixOS and Home-Manager environment, fully managed through [flakes](https://nixos.wiki/wiki/Flakes).
 This repository contains system configuration, user environment, development tools, and desktop management.
 
 > [!CAUTION]
@@ -20,7 +20,10 @@ This repository contains system configuration, user environment, development too
 
 ## References
 
+This is a list of repositories that I used as inspiration, sorted by the time of discovery.
+- [librephoenix's nixos-config](https://github.com/librephoenix/nixos-config) and [YouTube Channel](https://www.youtube.com/@librephoenix) - Beginner-friendly video series about NixOS and a configuration with many helpful ideas.
+- [Vimjoyer](https://www.youtube.com/@vimjoyer) - Beginner-friendly video series about NixOS.
 - [Misterio77's nix-config](https://github.com/Misterio77/nix-config) and [flake starter config](https://github.com/Misterio77/nix-starter-configs) - For the fundamental flake structure and recommended settings.
 - [jnsgruk's nixos-config](https://github.com/jnsgruk/nixos-config) - For the host / home-manager helper libraries and the blog post about [Secure Boot & TPM-backed Full Disk Encryption](https://jnsgr.uk/2024/04/nixos-secure-boot-tpm-fde).
 - [EmergentMind's nix-config](https://github.com/EmergentMind/nix-config) and [nix-secrets-reference](https://github.com/EmergentMind/nix-secrets-reference) - Helpful secret tips and nix-secrets + sops-nix deployment inspiration.
-- [librephoenix's nixos-config](https://github.com/librephoenix/nixos-config) and [YouTube Channel](https://www.youtube.com/@librephoenix) - Beginner-friendly video series about NixOS and a configuration with many helpful ideas.
+- [eisfunke's NixOS](https://git.eisfunke.com/config/nixos) and [sophie raven's dotfiles-nix](https://git.catgirl.cloud/999eagle/dotfiles-nix) - For their extremely helpful server configurations
