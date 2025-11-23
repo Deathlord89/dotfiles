@@ -1,4 +1,7 @@
+{ config, ... }:
 {
+  sops.secrets."zpool_zstorage_pass" = { };
+
   disko.devices = {
     disk = {
       root1 = {
@@ -253,8 +256,9 @@
           compression = "zstd";
           "com.sun:auto-snapshot" = "false";
         };
+        # Hook untested! keylocation was manually set.
         postCreateHook = ''
-          zfs set keylocation="prompt" zstorage
+          zfs set keylocation="file:///${config.sops.secrets.zpool_zstorage_pass.path}" zstorage
         '';
         options = {
           ashift = "12";
