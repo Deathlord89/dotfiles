@@ -9,11 +9,17 @@
     plymouth.enable = lib.mkForce false;
 
     initrd = {
+      availableKernelModules = [ "r8169" ];
       secrets = {
         "/etc/ssh/ssh_host_ed25519_key" = "/etc/ssh/ssh_host_ed25519_key";
       };
       systemd = {
         enable = lib.mkForce true;
+        network.networks."enp3s0" = {
+          enable = true;
+          name = "enp3s0";
+          DHCP = "yes";
+        };
         services.zfs-remote-unlock = {
           description = "Prepare for ZFS remote unlock";
           wantedBy = [ "initrd.target" ];
@@ -23,10 +29,7 @@
           ];
           serviceConfig.Type = "oneshot";
           script = ''
-            # Import all pools
-            zpool import -a
-            # Add the load-key command to the .profile
-            echo "zfs load-key -a; killall zfs" >> /root/.profile
+            echo "systemctl default" >> /var/empty/.profile
           '';
         };
       };
