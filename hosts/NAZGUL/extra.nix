@@ -1,8 +1,4 @@
 {
-  imports = [
-    ../common/optional/podman.nix
-  ];
-
   services = {
     zfs = {
       trim.enable = true;

@@ -122,6 +122,7 @@
     };
   };
 
+  optional.podman.enable = true;
   virtualisation.oci-containers = {
     containers = {
       "gotenberg" = {

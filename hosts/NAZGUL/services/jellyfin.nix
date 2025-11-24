@@ -30,6 +30,7 @@ in
     };
   };
 
+  optional.podman.enable = true;
   virtualisation.oci-containers = {
     containers = {
       "jdownloader2" = {
