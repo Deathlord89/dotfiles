@@ -18,6 +18,16 @@ This repository contains system configuration, user environment, development too
 
 ---
 
+## Highlights
+
+- Multiple NixOS configurations and package releases, including desktop (`unstable`) and server (`stable`)
+- Declarative partitioning with [disko](https://github.com/nix-community/disko)
+- Modular configuration
+- Declarative themes with [stylix](https://github.com/nix-community/stylix)
+- Deployment of secrets using [sops-nix](https://github.com/Mic92/sops-nix) (**with yubikey**) via a private repository called `nix-secrets`
+- Includes declarative [pre-commit scripts](https://github.com/pre-commit/pre-commit) with [git-hooks.nix](https://github.com/cachix/git-hooks.nix)
+- Built-in development shell via `direnv`
+
 ## References
 
 This is a list of repositories that I used as inspiration, sorted by the time of discovery.
