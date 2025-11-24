@@ -3,10 +3,19 @@
   programs.helix = {
     enable = true;
     settings = {
-      editor.cursor-shape = {
-        normal = "block";
-        insert = "bar";
-        select = "underline";
+      editor = {
+        cursor-shape = {
+          normal = "block";
+          insert = "bar";
+          select = "underline";
+        };
+        lsp = {
+          display-messages = true;
+          display-inlay-hints = true;
+        };
+        inline-diagnostics = {
+          cursor-line = "error";
+        };
       };
     };
     languages.language = [
