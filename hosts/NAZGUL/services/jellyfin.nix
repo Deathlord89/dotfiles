@@ -1,4 +1,8 @@
-{ config, ... }:
+{
+  config,
+  pkgs,
+  ...
+}:
 let
   mediaGroup = "media";
 in
@@ -28,6 +32,11 @@ in
       inherit (config.services.jellyfin) user;
       group = mediaGroup;
     };
+  };
+
+  # Add `yt-dlp` to jellyfin path
+  systemd.services.jellyfin = {
+    path = [ pkgs.yt-dlp ];
   };
 
   optional.podman.enable = true;
