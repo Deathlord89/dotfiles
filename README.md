@@ -21,6 +21,7 @@ This repository contains system configuration, user environment, development too
 ## Highlights
 
 - Multiple NixOS configurations and package releases, including desktop (`unstable`) and server (`stable`)
+- Development environment with `nix develop`
 - Declarative partitioning with [disko](https://github.com/nix-community/disko)
 - Modular configuration
 - Declarative themes with [stylix](https://github.com/nix-community/stylix)
