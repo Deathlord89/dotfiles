@@ -6,10 +6,11 @@
       set fish_greeting ""
     '';
     shellAliases = {
-      tree = "eza --tree";
-      neofetch = "fastfetch";
-      gst = "git status -sb";
       cat = "bat";
+      gst = "git status -sb";
+      man = "batman";
+      neofetch = "fastfetch";
+      tree = "eza --tree";
     };
     plugins = [
       {

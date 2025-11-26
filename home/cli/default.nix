@@ -22,6 +22,7 @@
 
   # Add stuff for your user as you see fit:
   home.packages = with pkgs; [
+    bat-extras.core
     btop # Resource monitor
     doggo # DNS client for humans
     fastfetch # Command-line system information tool
