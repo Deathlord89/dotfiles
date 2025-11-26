@@ -1,3 +1,4 @@
+{ lib, ... }:
 {
   services = {
     zfs = {
@@ -13,6 +14,9 @@
   networking = {
     hostId = "205ed76c";
   };
+
+  # Disable ZramSwap for better zfs memory management
+  zramSwap.enable = lib.mkForce false;
 
   #Open Ports for zfs shares
   networking.firewall.allowedTCPPorts = [ 2049 ];
