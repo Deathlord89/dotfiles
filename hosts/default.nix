@@ -69,6 +69,12 @@
     optimise.automatic = true;
 
     settings = {
+      # timeout for establishing connections in the binary cache substituter.
+      connect-timeout = 5;
+
+      # Fall back to building from source if a binary substitute fails
+      fallback = true;
+
       # Automatically optimise store after rebuild
       auto-optimise-store = true;
 
