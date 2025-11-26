@@ -46,8 +46,8 @@ in
 
       cursor = {
         size = 24;
-        package = pkgs.adwaita-icon-theme;
-        name = "Adwaita";
+        name = "Numix-Cursor";
+        package = pkgs.numix-cursor-theme;
       };
 
       opacity = {
