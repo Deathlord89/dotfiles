@@ -5,6 +5,12 @@
     shellInit = ''
       set fish_greeting ""
     '';
+    shellAbbrs = {
+      st = "systemctl status";
+      sr = "systemctl restart";
+      stu = "systemctl --user status";
+      sru = "systemctl --user restart";
+    };
     shellAliases = {
       cat = "bat";
       gst = "git status -sb";
