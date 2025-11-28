@@ -16,11 +16,18 @@ jobs:
       - name: Install Nix
         uses: DeterminateSystems/nix-installer-action@v20
 
+      - name: Setup SSH for nix-secrets
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.NIX_SECRETS_SSH_KEY }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan github.com >> ~/.ssh/known_hosts
+        env:
+          NIX_SECRETS_SSH_KEY: ${{ secrets.NIX_SECRETS_SSH_KEY }}
+
       - name: Update flake.lock
         uses: DeterminateSystems/update-flake-lock@v27
         id: update
-        env:
-          GITHUB_TOKEN: ${{ secrets.NIX_SECRETS_PAT }}
         with:
           commit-msg: "chore(flake): update inputs"
           pr-title: "chore(flake): update inputs"
