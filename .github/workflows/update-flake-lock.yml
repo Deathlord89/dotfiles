@@ -19,6 +19,8 @@ jobs:
       - name: Update flake.lock
         uses: DeterminateSystems/update-flake-lock@v27
         id: update
+        env:
+          GITHUB_TOKEN: ${{ secrets.NIX_SECRETS_PAT }}
         with:
           commit-msg: "chore(flake): update inputs"
           pr-title: "chore(flake): update inputs"
