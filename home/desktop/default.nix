@@ -13,13 +13,14 @@
 
   home.packages = with pkgs; [
     appimage-run
+    bitwarden-desktop
     discord
+    logseq
     mediainfo
     mediainfo-gui
+    nextcloud-client
     qownnotes
     zotero
-    bitwarden-desktop
-    nextcloud-client
   ];
 
 }
