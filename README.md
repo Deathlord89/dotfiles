@@ -12,9 +12,11 @@ A reproducible setup for my personal NixOS and Home-Manager environment, fully m
 This repository contains system configuration, user environment, development tools, and desktop management.
 
 > [!CAUTION]
-> This flake is only designed for my systems.
+> DO NOT DOWNLOAD AND RUN `nixos-rebuild` ON THIS REPOSITORY! \
+> This flake is designed for my systems only.
 > The user password is encrypted in a separate private repository using sops-nix.
 > Without the secrets, you cannot log in to the system.
+> If you run `nixos-rebuild boot/switch/test --flake .` on this folder, it will completely overwrite your current system!
 
 ---
 
