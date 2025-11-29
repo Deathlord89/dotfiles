@@ -1,5 +1,18 @@
-{ lib, ... }:
 {
+  config,
+  lib,
+  ...
+}:
+{
+  optional.autoUpgrade = {
+    enable = true;
+    user = config.users.users.ma-gerbig.name;
+    flakeDir = "${config.users.users.ma-gerbig.home}/.dotfiles";
+    onCalendar = "*:0/15";
+    upgrade = true;
+    persistent = false;
+  };
+
   services = {
     zfs = {
       trim.enable = true;
