@@ -4,4 +4,5 @@
   # List your module files here
   # my-module = import ./my-module.nix;
   auto_upgrade = import ./auto_upgrade.nix;
+  youtubeDownloader = import ./youtubeDownloader.nix;
 }
