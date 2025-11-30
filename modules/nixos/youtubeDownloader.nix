@@ -222,8 +222,20 @@ in
 
     systemd = {
       services = {
-        youtubeChannelDownloader = lib.mkIf (cfg.channels != [ ]) {
+        youtubeDownloader = {
           description = "YouTube Downloader Service";
+
+          serviceConfig = {
+            # Execute a dummy program
+            ExecStart = "/run/current-system/sw/bin/true";
+          };
+
+          wants = [ "network-online.target" ];
+          after = [ "network-online.target" ];
+        };
+
+        youtubeChannelDownloader = lib.mkIf (cfg.channels != [ ]) {
+          description = "YouTube Downloader Service - Channel";
 
           serviceConfig = {
             Type = "oneshot";
@@ -235,12 +247,13 @@ in
             WorkingDirectory = cfg.outputDir;
           };
 
-          wants = [ "network-online.target" ];
-          after = [ "network-online.target" ];
+          wantedBy = [ "youtubeDownloader.service" ];
+          partOf = [ "youtubeDownloader.service" ];
+          after = [ "youtubeDownloader.service" ];
         };
 
         youtubePlaylistDownloader = lib.mkIf (cfg.playlists != [ ]) {
-          description = "YouTube Downloader Service";
+          description = "YouTube Downloader Service - Playlist";
 
           serviceConfig = {
             Type = "oneshot";
@@ -252,12 +265,13 @@ in
             WorkingDirectory = cfg.outputDir;
           };
 
-          wants = [ "network-online.target" ];
-          after = [ "network-online.target" ];
+          wantedBy = [ "youtubeDownloader.service" ];
+          partOf = [ "youtubeDownloader.service" ];
+          after = [ "youtubeDownloader.service" ];
         };
 
         youtubeUniqueDownloader = lib.mkIf (cfg.uniques != [ ]) {
-          description = "YouTube Downloader Service";
+          description = "YouTube Downloader Service - Unique";
 
           serviceConfig = {
             Type = "oneshot";
@@ -269,12 +283,13 @@ in
             WorkingDirectory = cfg.outputDir;
           };
 
-          wants = [ "network-online.target" ];
-          after = [ "network-online.target" ];
+          wantedBy = [ "youtubeDownloader.service" ];
+          partOf = [ "youtubeDownloader.service" ];
+          after = [ "youtubeDownloader.service" ];
         };
       };
 
-      timers.youtubePlaylistDownloader = {
+      timers.youtubeDownloader = {
         description = "Timer to run YouTube downloader service";
         wantedBy = [ "timers.target" ];
         timerConfig = {
