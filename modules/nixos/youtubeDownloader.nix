@@ -27,7 +27,7 @@ let
   '';
 
   downloadChannelScript = pkgs.writeShellApplication {
-    name = "youtubeDownloader_channels_script";
+    name = "script-youtubeChannelDownloader";
     runtimeInputs = with pkgs; [ yt-dlp ];
     text = ''
       # TheFrenchGhosty's Ultimate YouTube-DL Scripts Collection - Version 3.4.0
@@ -68,7 +68,7 @@ let
   };
 
   downloadPlaylistScript = pkgs.writeShellApplication {
-    name = "youtubeDownloader_playlists_script";
+    name = "script-youtubePlaylistDownloader";
     runtimeInputs = with pkgs; [ yt-dlp ];
     text = ''
       # TheFrenchGhosty's Ultimate YouTube-DL Scripts Collection - Version 3.4.0
@@ -108,7 +108,7 @@ let
   };
 
   downloadUniqueScript = pkgs.writeShellApplication {
-    name = "youtubeDownloader_uniques_script";
+    name = "script-youtubeUniqueDownloader";
     runtimeInputs = with pkgs; [ yt-dlp ];
     text = ''
       # TheFrenchGhosty's Ultimate YouTube-DL Scripts Collection - Version 3.4.0
