@@ -7,9 +7,9 @@
 let
   cfg = config.multimedia.youtubeDownloader;
 
-  # channelsFile = pkgs.writeText "channels.txt" (lib.concatStringsSep "\n" cfg.channels);
+  channelsFile = pkgs.writeText "channels.txt" (lib.concatStringsSep "\n" cfg.channels);
   playlistsFile = pkgs.writeText "playlists.txt" (lib.concatStringsSep "\n" cfg.playlists);
-  # uniqueFile = pkgs.writeText "unique.txt" (lib.concatStringsSep "\n" cfg.unique);
+  uniqueFile = pkgs.writeText "unique.txt" (lib.concatStringsSep "\n" cfg.uniques);
 
   format = builtins.replaceStrings [ "\n" ] [ "" ] ''
     (
@@ -26,46 +26,46 @@ let
     )+(bestaudio[acodec^=opus]/bestaudio)/best
   '';
 
-  # downloadChannelScript = pkgs.writeShellApplication {
-  #   name = "youtubeDownloader_channels_script";
-  #   runtimeInputs = with pkgs; [ yt-dlp ];
-  #   text = ''
-  #     # TheFrenchGhosty's Ultimate YouTube-DL Scripts Collection - Version 3.4.0
-  #     # https://github.com/TheFrenchGhosty/TheFrenchGhostys-Ultimate-YouTube-DL-Scripts-Collection
+  downloadChannelScript = pkgs.writeShellApplication {
+    name = "youtubeDownloader_channels_script";
+    runtimeInputs = with pkgs; [ yt-dlp ];
+    text = ''
+      # TheFrenchGhosty's Ultimate YouTube-DL Scripts Collection - Version 3.4.0
+      # https://github.com/TheFrenchGhosty/TheFrenchGhostys-Ultimate-YouTube-DL-Scripts-Collection
 
-  #     yt-dlp \
-  #       --format "${format}" \
-  #       --force-ipv4 \
-  #       --sleep-requests 1 \
-  #       --sleep-interval 5 \
-  #       --max-sleep-interval 30 \
-  #       --ignore-errors \
-  #       --no-continue \
-  #       --no-overwrites \
-  #       --download-archive "${cfg.outputDir}/channel_archive.log" \
-  #       --add-metadata \
-  #       --parse-metadata "%(title)s:%(meta_title)s" \
-  #       --parse-metadata "%(uploader)s:%(meta_artist)s" \
-  #       --write-description \
-  #       --write-info-json \
-  #       --write-thumbnail \
-  #       --embed-thumbnail \
-  #       --sponsorblock-mark all \
-  #       --sponsorblock-remove sponsor \
-  #       --write-subs \
-  #       --write-auto-subs \
-  #       --sub-lang "en.*,de,deu" \
-  #       --embed-subs \
-  #       --check-formats \
-  #       --concurrent-fragments 3 \
-  #       --match-filter "!is_live & !live" \
-  #       --output "{cfg.outputDir}/%(uploader)s/%(uploader)s - %(upload_date)s - %(title)s/%(uploader)s - %(upload_date)s - %(title)s [%(id)s].%(ext)s" \
-  #       --merge-output-format "mkv" \
-  #       --throttled-rate 100K \
-  #       --batch-file ${channelsFile} \
-  #       --verbose
-  #   '';
-  # };
+      yt-dlp \
+        --format "${format}" \
+        --force-ipv4 \
+        --sleep-requests 1 \
+        --sleep-interval 5 \
+        --max-sleep-interval 30 \
+        --ignore-errors \
+        --no-continue \
+        --no-overwrites \
+        --download-archive "${cfg.outputDir}/channel_archive.log" \
+        --add-metadata \
+        --parse-metadata "%(title)s:%(meta_title)s" \
+        --parse-metadata "%(uploader)s:%(meta_artist)s" \
+        --write-description \
+        --write-info-json \
+        --write-thumbnail \
+        --embed-thumbnail \
+        --sponsorblock-mark all \
+        --sponsorblock-remove sponsor \
+        --write-subs \
+        --write-auto-subs \
+        --sub-lang "en.*,de,deu" \
+        --embed-subs \
+        --check-formats \
+        --concurrent-fragments 3 \
+        --match-filter "!is_live & !live" \
+        --output "{cfg.outputDir}/%(uploader)s/%(uploader)s - %(upload_date)s - %(title)s/%(uploader)s - %(upload_date)s - %(title)s [%(id)s].%(ext)s" \
+        --merge-output-format "mkv" \
+        --throttled-rate 100K \
+        --batch-file ${channelsFile} \
+        --verbose
+    '';
+  };
 
   downloadPlaylistScript = pkgs.writeShellApplication {
     name = "youtubeDownloader_playlists_script";
@@ -107,46 +107,46 @@ let
     '';
   };
 
-  # downloadUniqueScript = pkgs.writeShellApplication {
-  #   name = "youtubeDownloader_uniques_script";
-  #   runtimeInputs = with pkgs; [ yt-dlp ];
-  #   text = ''
-  #     # TheFrenchGhosty's Ultimate YouTube-DL Scripts Collection - Version 3.4.0
-  #     # https://github.com/TheFrenchGhosty/TheFrenchGhostys-Ultimate-YouTube-DL-Scripts-Collection
+  downloadUniqueScript = pkgs.writeShellApplication {
+    name = "youtubeDownloader_uniques_script";
+    runtimeInputs = with pkgs; [ yt-dlp ];
+    text = ''
+      # TheFrenchGhosty's Ultimate YouTube-DL Scripts Collection - Version 3.4.0
+      # https://github.com/TheFrenchGhosty/TheFrenchGhostys-Ultimate-YouTube-DL-Scripts-Collection
 
-  #     yt-dlp \
-  #       --format "${format}" \
-  #       --force-ipv4 \
-  #       --sleep-requests 1 \
-  #       --sleep-interval 5 \
-  #       --max-sleep-interval 30 \
-  #       --ignore-errors \
-  #       --no-continue \
-  #       --no-overwrites \
-  #       --download-archive "${cfg.outputDir}/unique_archive.log" \
-  #       --add-metadata \
-  #       --parse-metadata "%(title)s:%(meta_title)s" \
-  #       --parse-metadata "%(uploader)s:%(meta_artist)s" \
-  #       --write-description \
-  #       --write-info-json \
-  #       --write-thumbnail \
-  #       --embed-thumbnail \
-  #       --sponsorblock-mark all \
-  #       --sponsorblock-remove sponsor \
-  #       --write-subs \
-  #       --write-auto-subs \
-  #       --sub-lang "en.*,de,deu" \
-  #       --embed-subs \
-  #       --check-formats \
-  #       --concurrent-fragments 3 \
-  #       --match-filter "!is_live & !live" \
-  #       --output "${cfg.outputDir}/%(title)s - %(uploader)s - %(upload_date)s/%(title)s - %(uploader)s - %(upload_date)s [%(id)s].%(ext)s" \
-  #       --merge-output-format "mkv" \
-  #       --throttled-rate 100K \
-  #       --batch-file ${uniqueFile} \
-  #       --verbose
-  #   '';
-  # };
+      yt-dlp \
+        --format "${format}" \
+        --force-ipv4 \
+        --sleep-requests 1 \
+        --sleep-interval 5 \
+        --max-sleep-interval 30 \
+        --ignore-errors \
+        --no-continue \
+        --no-overwrites \
+        --download-archive "${cfg.outputDir}/unique_archive.log" \
+        --add-metadata \
+        --parse-metadata "%(title)s:%(meta_title)s" \
+        --parse-metadata "%(uploader)s:%(meta_artist)s" \
+        --write-description \
+        --write-info-json \
+        --write-thumbnail \
+        --embed-thumbnail \
+        --sponsorblock-mark all \
+        --sponsorblock-remove sponsor \
+        --write-subs \
+        --write-auto-subs \
+        --sub-lang "en.*,de,deu" \
+        --embed-subs \
+        --check-formats \
+        --concurrent-fragments 3 \
+        --match-filter "!is_live & !live" \
+        --output "${cfg.outputDir}/%(title)s - %(uploader)s - %(upload_date)s/%(title)s - %(uploader)s - %(upload_date)s [%(id)s].%(ext)s" \
+        --merge-output-format "mkv" \
+        --throttled-rate 100K \
+        --batch-file ${uniqueFile} \
+        --verbose
+    '';
+  };
 in
 {
   options = {
@@ -221,21 +221,57 @@ in
     ];
 
     systemd = {
-      services.youtubePlaylistDownloader = {
-        description = "YouTube Downloader Service";
+      services = {
+        youtubeChannelDownloader = lib.mkIf (cfg.channels != [ ]) {
+          description = "YouTube Downloader Service";
 
-        serviceConfig = {
-          Type = "oneshot";
-          UMask = "002";
-          ExecStart = "${pkgs.lib.getExe downloadPlaylistScript}";
-          Restart = "on-failure";
-          User = cfg.user;
-          Group = cfg.group;
-          WorkingDirectory = cfg.outputDir;
+          serviceConfig = {
+            Type = "oneshot";
+            UMask = "002";
+            ExecStart = "${pkgs.lib.getExe downloadChannelScript}";
+            Restart = "on-failure";
+            User = cfg.user;
+            Group = cfg.group;
+            WorkingDirectory = cfg.outputDir;
+          };
+
+          wants = [ "network-online.target" ];
+          after = [ "network-online.target" ];
         };
 
-        wants = [ "network-online.target" ];
-        after = [ "network-online.target" ];
+        youtubePlaylistDownloader = lib.mkIf (cfg.playlists != [ ]) {
+          description = "YouTube Downloader Service";
+
+          serviceConfig = {
+            Type = "oneshot";
+            UMask = "002";
+            ExecStart = "${pkgs.lib.getExe downloadPlaylistScript}";
+            Restart = "on-failure";
+            User = cfg.user;
+            Group = cfg.group;
+            WorkingDirectory = cfg.outputDir;
+          };
+
+          wants = [ "network-online.target" ];
+          after = [ "network-online.target" ];
+        };
+
+        youtubeUniqueDownloader = lib.mkIf (cfg.uniques != [ ]) {
+          description = "YouTube Downloader Service";
+
+          serviceConfig = {
+            Type = "oneshot";
+            UMask = "002";
+            ExecStart = "${pkgs.lib.getExe downloadUniqueScript}";
+            Restart = "on-failure";
+            User = cfg.user;
+            Group = cfg.group;
+            WorkingDirectory = cfg.outputDir;
+          };
+
+          wants = [ "network-online.target" ];
+          after = [ "network-online.target" ];
+        };
       };
 
       timers.youtubePlaylistDownloader = {
