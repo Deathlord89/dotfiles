@@ -224,19 +224,16 @@ in
       services = {
         youtubeDownloader = {
           description = "YouTube Downloader Service";
-
           serviceConfig = {
             # Execute a dummy program
             ExecStart = "/run/current-system/sw/bin/true";
           };
-
           wants = [ "network-online.target" ];
           after = [ "network-online.target" ];
         };
 
         youtubeChannelDownloader = lib.mkIf (cfg.channels != [ ]) {
           description = "YouTube Downloader Service - Channel";
-
           serviceConfig = {
             Type = "oneshot";
             UMask = "002";
@@ -246,7 +243,6 @@ in
             Group = cfg.group;
             WorkingDirectory = cfg.outputDir;
           };
-
           wantedBy = [ "youtubeDownloader.service" ];
           partOf = [ "youtubeDownloader.service" ];
           after = [ "youtubeDownloader.service" ];
@@ -254,7 +250,6 @@ in
 
         youtubePlaylistDownloader = lib.mkIf (cfg.playlists != [ ]) {
           description = "YouTube Downloader Service - Playlist";
-
           serviceConfig = {
             Type = "oneshot";
             UMask = "002";
@@ -264,7 +259,6 @@ in
             Group = cfg.group;
             WorkingDirectory = cfg.outputDir;
           };
-
           wantedBy = [ "youtubeDownloader.service" ];
           partOf = [ "youtubeDownloader.service" ];
           after = [ "youtubeDownloader.service" ];
@@ -272,7 +266,6 @@ in
 
         youtubeUniqueDownloader = lib.mkIf (cfg.uniques != [ ]) {
           description = "YouTube Downloader Service - Unique";
-
           serviceConfig = {
             Type = "oneshot";
             UMask = "002";
@@ -282,7 +275,6 @@ in
             Group = cfg.group;
             WorkingDirectory = cfg.outputDir;
           };
-
           wantedBy = [ "youtubeDownloader.service" ];
           partOf = [ "youtubeDownloader.service" ];
           after = [ "youtubeDownloader.service" ];
