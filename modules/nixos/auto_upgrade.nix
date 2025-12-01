@@ -2,6 +2,7 @@
   config,
   lib,
   pkgs,
+  sopsFolder,
   ...
 }:
 let
@@ -135,6 +136,10 @@ in
       }
     ];
 
+    sops.secrets."tokens/github_deploy_key" = {
+      sopsFile = "${sopsFolder}/shared.yaml";
+    };
+
     systemd = {
       services = {
         nixos-autoupgrade-pull = {
@@ -188,6 +193,7 @@ in
           environment = {
             inherit (config.environment.sessionVariables) NIX_PATH;
             HOME = "/root";
+            GIT_SSH_COMMAND = "ssh -i ${config.sops.secrets."tokens/github_deploy_key".path}";
           };
 
           path = with pkgs; [
