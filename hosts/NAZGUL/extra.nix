@@ -1,9 +1,20 @@
 {
   config,
+  inputs,
   lib,
   ...
 }:
 {
+  multimedia.youtubeDownloader = {
+    enable = true;
+    inherit (config.services.jellyfin) user;
+    inherit (config.services.jellyfin) group;
+    outputDir = "/var/media/videos/YouTube";
+    inherit (inputs.nix-secrets.youtubeDownloader) channels;
+    inherit (inputs.nix-secrets.youtubeDownloader) playlists;
+    inherit (inputs.nix-secrets.youtubeDownloader) uniques;
+  };
+
   optional.autoUpgrade = {
     enable = true;
     user = config.users.users.ma-gerbig.name;
