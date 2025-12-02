@@ -59,6 +59,7 @@ let
         --merge-output-format "mkv" \
         --throttled-rate 100K \
         --batch-file ${channelsFile} \
+        --no-windows-filenames \
         --verbose
     '';
   };
@@ -99,6 +100,7 @@ let
         --merge-output-format "mkv" \
         --throttled-rate 100K \
         --batch-file ${playlistsFile} \
+        --no-windows-filenames \
         --verbose
     '';
   };
@@ -140,6 +142,7 @@ let
         --merge-output-format "mkv" \
         --throttled-rate 100K \
         --batch-file ${uniqueFile} \
+        --no-windows-filenames \
         --verbose
     '';
   };
