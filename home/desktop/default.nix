@@ -19,6 +19,7 @@
     mediainfo
     mediainfo-gui
     nextcloud-client
+    portfolio
     qownnotes
     zotero
   ];
