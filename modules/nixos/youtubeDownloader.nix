@@ -36,6 +36,7 @@ let
         --sleep-interval 5 \
         --max-sleep-interval 30 \
         --ignore-errors \
+        --ignore-no-formats-error \
         --no-continue \
         --no-overwrites \
         --download-archive "${cfg.outputDir}/channel_archive.log" \
@@ -54,7 +55,7 @@ let
         --embed-subs \
         --check-formats \
         --concurrent-fragments 3 \
-        --match-filter "!is_live & !live" \
+        --match-filter "!is_live & !live & availability != private" \
         --output "{cfg.outputDir}/%(uploader)s/%(uploader)s - %(upload_date)s - %(title)s/%(uploader)s - %(upload_date)s - %(title)s [%(id)s].%(ext)s" \
         --merge-output-format "mkv" \
         --throttled-rate 100K \
@@ -78,11 +79,13 @@ let
         --sleep-interval 5 \
         --max-sleep-interval 30 \
         --ignore-errors \
+        --ignore-no-formats-error \
         --no-continue \
         --no-overwrites \
         --download-archive "${cfg.outputDir}/playlist_archive.log" \
         --add-metadata \
-        --parse-metadata "%(title)s:%(meta_title)s" --parse-metadata "%(uploader)s:%(meta_artist)s" \
+        --parse-metadata "%(title)s:%(meta_title)s" \
+        --parse-metadata "%(uploader)s:%(meta_artist)s" \
         --write-description \
         --write-info-json \
         --write-thumbnail \
@@ -95,7 +98,7 @@ let
         --embed-subs \
         --check-formats \
         --concurrent-fragments 3 \
-        --match-filter "!is_live & !live" \
+        --match-filter "!is_live & !live & availability != private" \
         --output "${cfg.outputDir}/%(playlist)s - (%(uploader)s)/%(upload_date)s - %(title)s/%(upload_date)s - %(title)s [%(id)s].%(ext)s" \
         --merge-output-format "mkv" \
         --throttled-rate 100K \
@@ -119,6 +122,7 @@ let
         --sleep-interval 5 \
         --max-sleep-interval 30 \
         --ignore-errors \
+        --ignore-no-formats-error \
         --no-continue \
         --no-overwrites \
         --download-archive "${cfg.outputDir}/unique_archive.log" \
@@ -137,7 +141,7 @@ let
         --embed-subs \
         --check-formats \
         --concurrent-fragments 3 \
-        --match-filter "!is_live & !live" \
+        --match-filter "!is_live & !live & availability != private" \
         --output "${cfg.outputDir}/%(title)s - %(uploader)s - %(upload_date)s/%(title)s - %(uploader)s - %(upload_date)s [%(id)s].%(ext)s" \
         --merge-output-format "mkv" \
         --throttled-rate 100K \
