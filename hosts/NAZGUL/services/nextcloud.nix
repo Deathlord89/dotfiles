@@ -30,7 +30,7 @@
   services = {
     nextcloud = {
       enable = true;
-      package = pkgs.nextcloud31;
+      package = pkgs.nextcloud32;
       hostName = "cloud.${inputs.nix-secrets.domain}";
       # home dir is default: /var/lib/nextcloud
       datadir = "/var/cloud";
