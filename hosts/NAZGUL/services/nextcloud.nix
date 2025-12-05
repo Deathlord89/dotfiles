@@ -69,9 +69,9 @@
         # email sending
         "mail_smtpmode" = "smtp";
         "mail_smtpsecure" = "ssl";
-        "mail_smtpauth" = "1";
+        "mail_smtpauth" = true;
         "mail_sendmailmode" = "smtp";
-        "mail_smtpport" = "465";
+        "mail_smtpport" = 465;
         # mail_smtppassword is set via secretFile
 
         log_type = "errorlog";
