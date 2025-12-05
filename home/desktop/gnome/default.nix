@@ -40,9 +40,6 @@ in
         "native-window-placement@gnome-shell-extensions.gcampax.github.com"
         "user-theme@gnome-shell-extensions.gcampax.github.com"
       ];
-      disabled-extensions = [
-        "pop-shell@system76.com"
-      ];
     };
     "org/gnome/desktop/interface" = {
       font-antialiasing = "grayscale";
@@ -135,7 +132,6 @@ in
         fuzzy-app-search
         gsconnect
         native-window-placement
-        pop-shell
         user-themes
       ]);
   };
