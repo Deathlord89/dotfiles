@@ -157,7 +157,6 @@ in
 
           environment = {
             inherit (config.environment.sessionVariables) NIX_PATH;
-            HOME = "/root";
           };
 
           path = with pkgs; [
