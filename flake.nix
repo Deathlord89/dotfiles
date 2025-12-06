@@ -6,7 +6,7 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
     # NixOS Stable - also see the 'stable-unstable' overlay at 'overlays/default.nix'.
-    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-25.05";
+    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-25.11";
 
     # A collection of NixOS modules covering hardware quirks
     nixos-hardware.url = "github:nixos/nixos-hardware/master";
@@ -23,7 +23,7 @@
 
     # Home Manager Stable
     home-manager-stable = {
-      url = "github:nix-community/home-manager/release-25.05";
+      url = "github:nix-community/home-manager/release-25.11";
       inputs.nixpkgs.follows = "nixpkgs-stable";
     };
 

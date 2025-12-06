@@ -7,7 +7,6 @@
 {
   imports = [
     (./. + "/${desktop}.nix")
-    ./25.05-compat.nix
 
     ../hardware/pipewire.nix
     ../hardware/printer.nix
