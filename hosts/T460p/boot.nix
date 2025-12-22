@@ -18,7 +18,7 @@
       "kvm-intel"
     ];
 
-    # Use the latest Linux / ChachyOS kernel, rather than the default LTS
+    # Use the latest Linux kernel, rather than the default LTS
     kernelPackages = pkgs.linuxPackages_latest;
   };
 

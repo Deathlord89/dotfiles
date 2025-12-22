@@ -22,8 +22,8 @@
     # Building for Rasoberry Pi
     #binfmt.emulatedSystems = ["aarch64-linux"];
 
-    # Use the latest Linux / ChachyOS kernel, rather than the default LTS
-    kernelPackages = pkgs.linuxPackages_cachyos;
+    # Use the latest Linux kernel, rather than the default LTS
+    kernelPackages = pkgs.linuxPackages_latest;
   };
 
   services.btrfs.autoScrub = {
