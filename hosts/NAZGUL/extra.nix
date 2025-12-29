@@ -22,7 +22,7 @@
   optional.autoUpgrade = {
     enable = true;
     user = config.users.users.ma-gerbig.name;
-    flakeDir = "${config.users.users.ma-gerbig.home}/.dotfiles";
+    flakeDir = "/home/ma-gerbig/.dotfiles";
     onCalendar = "*:0/15";
     upgrade = true;
     persistent = false;
