@@ -24,7 +24,7 @@
     user = config.users.users.ma-gerbig.name;
     flakeDir = "/home/ma-gerbig/.dotfiles";
     onCalendar = "*:0/15";
-    upgrade = true;
+    upgrade = false;
     persistent = false;
   };
 
