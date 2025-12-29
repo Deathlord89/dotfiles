@@ -4,7 +4,7 @@
     syncthing.enable = true;
   };
 
-  # Host specific eettings
+  # Host specific settings
   services = {
     syncthing = {
       settings = {
