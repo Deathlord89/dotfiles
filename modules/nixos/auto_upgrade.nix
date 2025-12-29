@@ -146,8 +146,7 @@ in
           description = "Pull dotfiles from git repo";
           restartIfChanged = false;
 
-          # TODO Enable rebuild script after testing the CI part on github!
-          # onSuccess = [ "nixos-autoupgrade-rebuild.service" ];
+          onSuccess = lib.mkIf cfg.upgrade [ "nixos-autoupgrade-rebuild.service" ];
 
           serviceConfig = {
             Type = "oneshot";
