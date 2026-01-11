@@ -23,7 +23,7 @@ in
       ];
       extraPackages = with pkgs; [
         nil
-        nixfmt-rfc-style
+        nixfmt
         package-version-server
       ];
 

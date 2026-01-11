@@ -91,7 +91,7 @@
       packages = libFlake.forAllSystems (system: import ./pkgs nixpkgs.legacyPackages.${system});
 
       # Formatter for your nix files, available through 'nix fmt'
-      formatter = libFlake.forAllSystems (system: nixpkgs.legacyPackages.${system}.nixfmt-rfc-style);
+      formatter = libFlake.forAllSystems (system: nixpkgs.legacyPackages.${system}.nixfmt);
 
       # Pre-commit checks
       checks = libFlake.forAllSystems (
