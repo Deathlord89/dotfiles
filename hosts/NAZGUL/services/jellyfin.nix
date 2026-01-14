@@ -1,5 +1,6 @@
 {
   config,
+  inputs,
   pkgs,
   ...
 }:
@@ -18,6 +19,10 @@ in
   sops.secrets = {
     "jdownloader/env.enc" = {
       restartUnits = [ "podman-jdownloader2.service" ];
+    };
+    sonarr_api = {
+      owner = config.services.recyclarr.user;
+      inherit (config.services.recyclarr) group;
     };
     "umlautadaptarr/env.enc" = {
       restartUnits = [ "podman-umlautadaptarr.service" ];
@@ -55,6 +60,20 @@ in
       enable = true;
       openFirewall = true;
     };
+
+    recyclarr = {
+      enable = true;
+      configuration = {
+        sonarr.main-sonarr = {
+          api_key._secret = config.sops.secrets.sonarr_api.path;
+          base_url = "http://localhost:${toString config.services.sonarr.settings.server.port}";
+          delete_old_custom_formats = true;
+          replace_existing_custom_formats = true;
+          #inherit (inputs.nix-secrets.recyclarr.main-sonarr) quality_profiles;
+          inherit (inputs.nix-secrets.recyclarr.main-sonarr) quality_profiles custom_formats;
+        };
+      };
+    };
   };
 
   # Add `yt-dlp` to jellyfin path
@@ -71,9 +90,9 @@ in
         environment = {
           TZ = "Europe/Berlin";
           SONARR__ENABLED = "true";
-          SONARR__HOST = "http://192.168.10.10:8989";
+          SONARR__HOST = "http://192.168.10.10:${toString config.services.sonarr.settings.server.port}";
           RADARR__ENABLED = "true";
-          RADARR__HOST = "http://192.168.10.10:7878";
+          RADARR__HOST = "http://192.168.10.10:${toString config.services.radarr.settings.server.port}";
         };
         environmentFiles = [ "${config.sops.secrets."umlautadaptarr/env.enc".path}" ];
         ports = [ "5006:5006/tcp" ];
