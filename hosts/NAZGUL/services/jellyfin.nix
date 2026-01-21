@@ -20,6 +20,10 @@ in
     "jdownloader/env.enc" = {
       restartUnits = [ "podman-jdownloader2.service" ];
     };
+    radarr_api = {
+      owner = config.services.recyclarr.user;
+      inherit (config.services.recyclarr) group;
+    };
     sonarr_api = {
       owner = config.services.recyclarr.user;
       inherit (config.services.recyclarr) group;
@@ -69,8 +73,14 @@ in
           base_url = "http://localhost:${toString config.services.sonarr.settings.server.port}";
           delete_old_custom_formats = true;
           replace_existing_custom_formats = true;
-          #inherit (inputs.nix-secrets.recyclarr.main-sonarr) quality_profiles;
           inherit (inputs.nix-secrets.recyclarr.main-sonarr) quality_profiles custom_formats;
+        };
+        radarr.main-radarr = {
+          api_key._secret = config.sops.secrets.radarr_api.path;
+          base_url = "http://localhost:${toString config.services.radarr.settings.server.port}";
+          delete_old_custom_formats = true;
+          replace_existing_custom_formats = true;
+          inherit (inputs.nix-secrets.recyclarr.main-radarr) quality_profiles custom_formats;
         };
       };
     };
