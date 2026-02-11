@@ -46,6 +46,11 @@ in
       group = mediaGroup;
     };
 
+    prowlarr = {
+      enable = true;
+      openFirewall = true;
+    };
+
     sonarr = {
       enable = true;
       inherit (config.services.jellyfin) user;
@@ -60,8 +65,10 @@ in
       openFirewall = true;
     };
 
-    prowlarr = {
+    lidarr = {
       enable = true;
+      inherit (config.services.jellyfin) user;
+      group = mediaGroup;
       openFirewall = true;
     };
 
