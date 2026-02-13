@@ -40,6 +40,18 @@ in
       openFirewall = true;
     };
 
+    navidrome = {
+      enable = true;
+      inherit (config.services.jellyfin) user;
+      group = mediaGroup;
+      settings = {
+        Address = "192.168.10.10";
+        Port = 4533;
+        MusicFolder = "/var/media/music";
+      };
+      openFirewall = true;
+    };
+
     sabnzbd = {
       enable = true;
       inherit (config.services.jellyfin) user;
