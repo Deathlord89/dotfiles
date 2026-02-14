@@ -52,7 +52,6 @@ in
         Address = "192.168.10.10";
         Port = 4533;
         MusicFolder = "/var/media/music";
-        EnableDownloads = false;
         "LastFM.Language" = "de";
       };
       environmentFile = config.sops.secrets."last_fm/env.enc".path;
