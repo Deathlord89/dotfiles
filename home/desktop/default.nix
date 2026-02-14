@@ -17,6 +17,7 @@
     discord
     logseq
     mediainfo
+    feishin
     mediainfo-gui
     nextcloud-client
     portfolio

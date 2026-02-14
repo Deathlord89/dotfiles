@@ -20,6 +20,10 @@ in
     "jdownloader/env.enc" = {
       restartUnits = [ "podman-jdownloader2.service" ];
     };
+    "last_fm/env.enc" = {
+      owner = config.services.navidrome.user;
+      inherit (config.services.navidrome) group;
+    };
     radarr_api = {
       owner = config.services.recyclarr.user;
       inherit (config.services.recyclarr) group;
@@ -40,10 +44,29 @@ in
       openFirewall = true;
     };
 
+    navidrome = {
+      enable = true;
+      inherit (config.services.jellyfin) user;
+      group = mediaGroup;
+      settings = {
+        Address = "192.168.10.10";
+        Port = 4533;
+        MusicFolder = "/var/media/music";
+        "LastFM.Language" = "de";
+      };
+      environmentFile = config.sops.secrets."last_fm/env.enc".path;
+      openFirewall = true;
+    };
+
     sabnzbd = {
       enable = true;
       inherit (config.services.jellyfin) user;
       group = mediaGroup;
+    };
+
+    prowlarr = {
+      enable = true;
+      openFirewall = true;
     };
 
     sonarr = {
@@ -60,8 +83,10 @@ in
       openFirewall = true;
     };
 
-    prowlarr = {
+    lidarr = {
       enable = true;
+      inherit (config.services.jellyfin) user;
+      group = mediaGroup;
       openFirewall = true;
     };
 

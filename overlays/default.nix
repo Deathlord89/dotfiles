@@ -10,6 +10,9 @@
     # example = prev.example.overrideAttrs (oldAttrs: rec {
     # ...
     # });
+    navidrome = prev.navidrome.overrideAttrs (old: {
+      CGO_CFLAGS_ALLOW = ".*--define-prefix.*";
+    });
   };
 
   stable-unstable = final: _prev: {
