@@ -20,6 +20,10 @@ in
     "jdownloader/env.enc" = {
       restartUnits = [ "podman-jdownloader2.service" ];
     };
+    "last_fm/env.enc" = {
+      owner = config.services.navidrome.user;
+      inherit (config.services.navidrome) group;
+    };
     radarr_api = {
       owner = config.services.recyclarr.user;
       inherit (config.services.recyclarr) group;
@@ -48,7 +52,10 @@ in
         Address = "192.168.10.10";
         Port = 4533;
         MusicFolder = "/var/media/music";
+        EnableDownloads = false;
+        "LastFM.Language" = "de";
       };
+      environmentFile = config.sops.secrets."last_fm/env.enc".path;
       openFirewall = true;
     };
 
