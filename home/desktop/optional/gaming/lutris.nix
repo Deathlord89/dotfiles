@@ -17,7 +17,7 @@ in
       enable = true;
       # steamPackage = osConfig.programs.steam.package;
       steamPackage = pkgs.steam;
-      winePackages = [ pkgs.wineWowPackages.stableFull ];
+      winePackages = [ pkgs.wineWow64Packages.stableFull ];
       extraPackages = with pkgs; [
         umu-launcher
         winetricks
