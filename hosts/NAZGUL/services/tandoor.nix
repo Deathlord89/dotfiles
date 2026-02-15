@@ -17,6 +17,7 @@
       extraConfig = {
         CSRF_TRUSTED_ORIGINS = "https://recipes.${inputs.nix-secrets.domain}";
         #ALLOWED_HOSTS = "recipes.${inputs.nix-secrets.domain}";
+        MEDIA_ROOT = "/var/lib/tandoor-recipes/media";
         DB_ENGINE = "django.db.backends.postgresql";
         POSTGRES_DB = "tandoor_recipes";
         POSTGRES_USER = "tandoor_recipes";
@@ -45,7 +46,7 @@
             }
           ];
           locations = {
-            "/media/".alias = "/var/lib/tandoor-recipes/";
+            "/media/".alias = "/var/lib/tandoor-recipes/media/";
             "/" = {
               proxyPass = "http://127.0.0.1:3030";
               extraConfig = ''
