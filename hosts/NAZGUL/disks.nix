@@ -274,6 +274,7 @@
           "media" = {
             type = "zfs_fs";
             options = {
+              atime = "off";
               mountpoint = "none";
             };
           };
@@ -287,6 +288,14 @@
             type = "zfs_fs";
             options = {
               mountpoint = "/var/media/isos";
+              recordsize = "1m";
+            };
+          };
+          "media/music" = {
+            type = "zfs_fs";
+            options = {
+              compression = "lz4";
+              mountpoint = "/var/media/music";
               recordsize = "1m";
             };
           };
