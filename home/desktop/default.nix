@@ -15,9 +15,9 @@
     appimage-run
     bitwarden-desktop
     discord
+    feishin
     logseq
     mediainfo
-    feishin
     mediainfo-gui
     nextcloud-client
     portfolio

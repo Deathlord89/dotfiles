@@ -22,7 +22,7 @@ in
         "org.gnome.Nautilus.desktop"
         "firefox.desktop"
         "thunderbird.desktop"
-        "com.mitchellh.ghostty.desktop"
+        "kitty.desktop"
         "codium.desktop"
         "steam.desktop"
         "bitwarden.desktop"
@@ -113,8 +113,8 @@ in
 
     "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0" = {
       binding = "<Ctrl><Alt>t";
-      command = "ghostty";
-      name = "Ghostty";
+      command = "kitty";
+      name = "Kitty";
     };
   };
 
