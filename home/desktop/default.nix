@@ -12,7 +12,6 @@
   ++ lib.optional (builtins.pathExists (./. + "/${desktop}")) ./${desktop};
 
   home.packages = with pkgs; [
-    appimage-run
     bitwarden-desktop
     discord
     feishin

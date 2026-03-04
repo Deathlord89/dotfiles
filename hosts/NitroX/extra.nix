@@ -8,6 +8,7 @@
       user = config.users.users.ma-gerbig.name;
       flakeDir = "/home/ma-gerbig/.dotfiles";
     };
+    appimage.enable = true;
     flatpak.enable = true;
     gaming.enable = true;
     libvirt.enable = true;
