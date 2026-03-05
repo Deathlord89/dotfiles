@@ -19,11 +19,13 @@ let
       footmisc # a range of footnote options
       glossaries # create glossaries and lists of acronyms
       hyphenat # locale settings
+      ifmtarg # If-then-else command
       makecell # tabular column heads and multi-line cells
       multirow # merge multiple table rows
       relsize # set font size relatively
       tocloft # control table of contents
       todonotes # marking things to do
+      xifthen # new commands for ifthen
       ;
   };
 in

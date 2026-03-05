@@ -6,6 +6,9 @@
       mangohud.enable = true;
       prismlauncher.enable = true;
     };
-    productivity.vivaldi.enable = true;
+    productivity = {
+      latex.enable = true;
+      vivaldi.enable = true;
+    };
   };
 }
