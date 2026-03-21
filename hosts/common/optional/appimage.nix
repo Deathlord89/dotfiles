@@ -22,15 +22,16 @@ in
       enable = true;
       binfmt = true;
       # Some appimages still have issues, so you can override for additional pkgs
-      #package = pkgs.appimage-run.override {
-      #extraPkgs = pkgs: [
-      #  pkgs.icu
-      #  pkgs.libdrm
-      #  pkgs.libxcrypt-legacy
-      #  pkgs.python312
-      #  pkgs.python312Packages.torch
-      #];
-      #};
+      package = pkgs.appimage-run.override {
+        extraPkgs = pkgs: [
+          pkgs.libxshmfence
+          #  pkgs.icu
+          #  pkgs.libdrm
+          #  pkgs.libxcrypt-legacy
+          #  pkgs.python312
+          #  pkgs.python312Packages.torch
+        ];
+      };
     };
   };
 }
