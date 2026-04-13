@@ -59,7 +59,7 @@
 
       data1 = {
         type = "disk";
-        device = "/dev/disk/by-id/ata-WDC_WD60EFRX-68L0BN1_WD-WXL1H16LX5XX";
+        device = "/dev/disk/by-id/ata-WDC_WD60EFPX-68C5ZN0_WD-WXH2DA5E8VUE";
         content = {
           type = "gpt";
           partitions = {

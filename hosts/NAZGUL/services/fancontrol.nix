@@ -1,7 +1,7 @@
 {
   services = {
     hddfancontrol = {
-      enable = true;
+      enable = false;
       settings = {
         zstorage = {
           extraArgs = [
@@ -16,7 +16,7 @@
             "60"
           ];
           disks = [
-            "/dev/disk/by-id/ata-WDC_WD60EFRX-68L0BN1_WD-WXL1H16LX5XX"
+            "/dev/disk/by-id/ata-WDC_WD60EFPX-68C5ZN0_WD-WXH2DA5E8VUE"
             "/dev/disk/by-id/ata-WDC_WD60EFRX-68L0BN1_WD-WXB1HB4VCJU3"
             "/dev/disk/by-id/ata-WDC_WD60EFPX-68C5ZN0_WD-WX42D344E417"
             "/dev/disk/by-id/ata-WDC_WD60EFPX-68C5ZN0_WD-WX22D345SXSE"
