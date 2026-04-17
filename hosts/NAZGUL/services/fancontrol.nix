@@ -1,7 +1,7 @@
 {
   services = {
     hddfancontrol = {
-      enable = false;
+      enable = true;
       settings = {
         zstorage = {
           extraArgs = [
@@ -22,7 +22,7 @@
             "/dev/disk/by-id/ata-WDC_WD60EFPX-68C5ZN0_WD-WX22D345SXSE"
             "/dev/disk/by-id/ata-WDC_WD60EFPX-68C5ZN0_WD-WX52D64NC34N"
           ];
-          pwmPaths = [ "/sys/class/hwmon/hwmon1/pwm2:160:64" ];
+          pwmPaths = [ "/sys/class/hwmon/hwmon2/pwm2:80:75" ];
         };
       };
     };
