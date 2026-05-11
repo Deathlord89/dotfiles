@@ -55,7 +55,7 @@
 
     # Private secrets repo
     nix-secrets = {
-      url = "git+ssh://git@github.com/Deathlord89/nix-secrets?shallow=1";
+      url = "git+ssh://git@github.com/Deathlord89/nix-secrets";
       inputs = { };
     };
   };
