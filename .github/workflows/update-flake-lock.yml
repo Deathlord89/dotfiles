@@ -14,10 +14,10 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
 
       - name: Install Nix
-        uses: DeterminateSystems/nix-installer-action@v20
+        uses: DeterminateSystems/nix-installer-action@v22
 
       - name: Setup SSH for nix-secrets
         run: |
@@ -29,7 +29,7 @@ jobs:
           NIX_SECRETS_SSH_KEY: ${{ secrets.NIX_SECRETS_SSH_KEY }}
 
       - name: Update flake.lock
-        uses: DeterminateSystems/update-flake-lock@v27
+        uses: DeterminateSystems/update-flake-lock@v28
         id: update
         with:
           commit-msg: "chore(flake): update inputs"
