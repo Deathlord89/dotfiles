@@ -94,7 +94,10 @@
     extraOptions = "!include ${config.sops.secrets."tokens/nix-access-tokens".path}";
   };
 
-  sops.secrets."tokens/nix-access-tokens".sopsFile = "${sopsFolder}/shared.yaml";
+  sops.secrets."tokens/nix-access-tokens" = {
+    owner = config.users.users.ma-gerbig.name;
+    sopsFile = "${sopsFolder}/shared.yaml";
+  };
 
   system = {
     inherit stateVersion;
