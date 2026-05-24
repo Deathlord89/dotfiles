@@ -53,6 +53,9 @@ in
       enable32Bit = true;
     };
 
+    # Enable ntsnc kernelmodule
+    boot.kernelModules = [ "ntsync" ];
+
     # Fix for Starcitizen
     boot.kernel.sysctl = {
       "vm.max_map_count" = 16777216;
