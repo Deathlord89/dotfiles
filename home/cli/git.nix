@@ -16,6 +16,7 @@
       };
     };
     signing = {
+      format = "openpgp";
       signByDefault = true;
       key = "39CB130C67B92382";
     };
