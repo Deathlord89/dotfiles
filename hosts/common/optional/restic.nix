@@ -25,8 +25,8 @@ in
     };
 
     environment.systemPackages = with pkgs; [
-      stable.restic
-      stable.rclone
+      restic
+      rclone
     ];
   };
 }
