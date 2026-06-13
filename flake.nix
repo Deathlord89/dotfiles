@@ -2,25 +2,19 @@
   description = "My NixOS configuration";
 
   inputs = {
-    # NixOS Unstable
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    # NixOS Stable
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-26.05";
 
-    # NixOS Stable - also see the 'stable-unstable' overlay at 'overlays/default.nix'.
-    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-25.11";
+    # NixOS Untable - also see the 'unstable-packages' overlay at 'overlays/default.nix'.
+    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
 
     # A collection of NixOS modules covering hardware quirks
     nixos-hardware.url = "github:nixos/nixos-hardware/master";
 
     # Home Manager
     home-manager = {
-      url = "github:nix-community/home-manager/";
+      url = "github:nix-community/home-manager/release-26.05";
       inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    # Home Manager Stable
-    home-manager-stable = {
-      url = "github:nix-community/home-manager/release-25.11";
-      inputs.nixpkgs.follows = "nixpkgs-stable";
     };
 
     # Declarative disk partitioning
@@ -48,7 +42,7 @@
     };
 
     # Theming
-    stylix.url = "github:danth/stylix";
+    stylix.url = "github:danth/stylix/release-26.05";
 
     # Minecraft server
     nix-minecraft.url = "github:Infinidoge/nix-minecraft";
@@ -62,7 +56,6 @@
 
   outputs =
     {
-      nixpkgs-stable,
       nixpkgs,
       self,
       ...
@@ -125,7 +118,6 @@
         # Desktop machines
         NAZGUL = libFlake.mkHost {
           hostname = "NAZGUL";
-          pkgsInput = nixpkgs-stable;
         };
 
         NitroX = libFlake.mkHost {
@@ -136,7 +128,6 @@
         NixosVM = libFlake.mkHost {
           hostname = "NixosVM";
           desktop = "plasma";
-          pkgsInput = nixpkgs-stable;
         };
 
         T460p = libFlake.mkHost {
