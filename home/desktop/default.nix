@@ -12,10 +12,12 @@
   ++ lib.optional (builtins.pathExists (./. + "/${desktop}")) ./${desktop};
 
   home.packages = with pkgs; [
-    bitwarden-desktop
+    #bitwarden-desktop
     discord
     feishin
-    logseq
+    (logseq.override {
+      electron_39 = electron_40;
+    })
     mediainfo
     mediainfo-gui
     nextcloud-client
