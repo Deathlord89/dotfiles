@@ -1,9 +1,14 @@
 {
   config,
+  desktop,
+  hostname,
+  inputs,
   lib,
   libx,
   pkgs,
   sopsFolder,
+  stateVersion,
+  username,
   ...
 }:
 let
@@ -41,4 +46,19 @@ in
       sopsFile = "${sopsFolder}/shared.yaml";
     };
   };
+
+  home-manager = {
+    users.ma-gerbig = import ../../../../home;
+    extraSpecialArgs = {
+      inherit
+        desktop
+        hostname
+        inputs
+        libx
+        stateVersion
+        username
+        ;
+    };
+  };
+
 }

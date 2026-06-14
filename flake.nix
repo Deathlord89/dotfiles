@@ -139,24 +139,24 @@
       # Standalone home-manager configuration entrypoint
       # Available through 'home-manager --flake .#your-username@your-hostname'
       homeConfigurations = {
-        "${username}@NAZGUL" = libFlake.mkHome {
-          hostname = "NAZGUL";
-        };
+        # "${username}@NAZGUL" = libFlake.mkHome {
+        #   hostname = "NAZGUL";
+        # };
 
-        "${username}@NitroX" = libFlake.mkHome {
-          hostname = "NitroX";
-          desktop = "gnome";
-        };
+        # "${username}@NitroX" = libFlake.mkHome {
+        #   hostname = "NitroX";
+        #   desktop = "gnome";
+        # };
 
-        "${username}@NixosVM" = libFlake.mkHome {
-          hostname = "NixosVM";
-          desktop = "plasma";
-        };
+        # "${username}@NixosVM" = libFlake.mkHome {
+        #   hostname = "NixosVM";
+        #   desktop = "plasma";
+        # };
 
-        "${username}@T460p" = libFlake.mkHome {
-          hostname = "T460p";
-          desktop = "gnome";
-        };
+        # "${username}@T460p" = libFlake.mkHome {
+        #   hostname = "T460p";
+        #   desktop = "gnome";
+        # };
       };
     };
 }
