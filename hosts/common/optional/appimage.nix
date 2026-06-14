@@ -14,8 +14,7 @@ in
 
   config = lib.mkIf cfg.enable {
     environment.systemPackages = with pkgs; [
-      # remove stable when untable is fixed
-      stable.gearlever
+      gearlever
     ];
 
     programs.appimage = {

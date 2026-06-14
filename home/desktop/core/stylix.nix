@@ -3,6 +3,7 @@
 {
   config,
   desktop,
+  inputs,
   lib,
   libx,
   pkgs,
@@ -13,6 +14,9 @@ let
   theme = import (libx.relativeToRoot "themes" + ("/" + config.optional.stylix.theme));
 in
 {
+
+  imports = [ inputs.stylix.homeModules.stylix ];
+
   options.optional.stylix = {
     enable = lib.mkOption {
       type = lib.types.bool;

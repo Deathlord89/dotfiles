@@ -36,7 +36,7 @@
       # Add overlays your own flake exports (from overlays and pkgs dir):
       outputs.overlays.additions
       outputs.overlays.modifications
-      outputs.overlays.stable-unstable
+      outputs.overlays.unstable-packages
 
       # You can also add overlays exported from other flakes:
       # neovim-nightly-overlay.overlays.default
@@ -86,9 +86,6 @@
         "@wheel"
         "root"
       ];
-
-      substituters = [ "https://cache.garnix.io" ];
-      trusted-public-keys = [ "cache.garnix.io:CTFPyKSLcx5RMJKfLo5EEPUObbA78b0YQ2DTCJXqr9g=" ];
     };
 
     extraOptions = "!include ${config.sops.secrets."tokens/nix-access-tokens".path}";
