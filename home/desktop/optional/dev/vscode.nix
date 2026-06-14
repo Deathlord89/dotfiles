@@ -13,18 +13,17 @@ in
   };
 
   config = lib.mkIf cfg.enable {
-    programs.vscode = {
+    programs.vscodium = {
       enable = true;
       package = pkgs.unstable.vscodium;
       profiles.default = {
-        extensions = with pkgs.vscode-extensions; [
-          shd101wyy.markdown-preview-enhanced
-          naumovs.color-highlight
-          ms-ceintl.vscode-language-pack-de
-          mkhl.direnv
-          yzhang.markdown-all-in-one
+        extensions = with pkgs.unstable.vscode-extensions; [
           jnoortheen.nix-ide
-          bbenoist.nix
+          mkhl.direnv
+          ms-ceintl.vscode-language-pack-de
+          naumovs.color-highlight
+          shd101wyy.markdown-preview-enhanced
+          yzhang.markdown-all-in-one
         ];
         userSettings = {
           "git.enableCommitSigning" = true;
