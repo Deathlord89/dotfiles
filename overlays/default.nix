@@ -15,10 +15,6 @@
   unstable-packages = final: _prev: {
     # When applied, the unstable nixpkgs set (declared in the flake inputs) will
     # be accessible through 'pkgs.unstable'
-    unstable = import inputs.nixpkgs {
-      #system = final.system;
-      inherit (final) system;
-      config.allowUnfree = true;
-    };
+    unstable = inputs.nixpkgs-unstable.legacyPackages.${final.stdenv.hostPlatform.system};
   };
 }
