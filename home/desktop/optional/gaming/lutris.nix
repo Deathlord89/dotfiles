@@ -2,6 +2,7 @@
   config,
   lib,
   pkgs,
+  osConfig,
   ...
 }:
 let
@@ -15,8 +16,7 @@ in
   config = lib.mkIf cfg.enable {
     programs.lutris = {
       enable = true;
-      # steamPackage = osConfig.programs.steam.package;
-      steamPackage = pkgs.steam;
+      steamPackage = osConfig.programs.steam.package;
       winePackages = [ pkgs.wineWow64Packages.stableFull ];
       extraPackages = with pkgs; [
         umu-launcher
