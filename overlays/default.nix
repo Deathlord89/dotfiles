@@ -10,9 +10,6 @@
     # example = prev.example.overrideAttrs (oldAttrs: rec {
     # ...
     # });
-    openldap = prev.openldap.overrideAttrs (_: {
-      doCheck = !prev.stdenv.hostPlatform.isi686;
-    });
   };
 
   unstable-packages = final: _prev: {
