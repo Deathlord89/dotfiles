@@ -3,7 +3,10 @@
   boot = {
     # Add zfs support
     supportedFilesystems = [ "zfs" ];
-    zfs.extraPools = [ "zstorage" ];
+    zfs = {
+      forceImportRoot = false;
+      extraPools = [ "zstorage" ];
+    };
 
     initrd = {
       availableKernelModules = [
