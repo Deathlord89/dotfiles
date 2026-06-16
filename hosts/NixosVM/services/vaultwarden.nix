@@ -37,4 +37,8 @@
       ensureDatabases = [ "vaultwarden" ];
     };
   };
+
+  networking.firewall.allowedTCPPorts = [
+    8222
+  ];
 }
