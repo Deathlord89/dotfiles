@@ -8,7 +8,6 @@
   services = {
     vaultwarden = {
       enable = true;
-      #backupDir = "/var/local/vaultwarden/backup";
 
       dbBackend = "postgresql";
       configurePostgres = false;
