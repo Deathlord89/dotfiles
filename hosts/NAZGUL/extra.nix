@@ -19,13 +19,12 @@
     outputDir = "/var/media/videos/YouTube";
   };
 
-  optional.autoUpgrade = {
-    enable = true;
-    user = config.users.users.ma-gerbig.name;
-    flakeDir = "/home/ma-gerbig/.dotfiles";
-    onCalendar = "*:0/15";
-    upgrade = false;
-    persistent = false;
+  system.autoUpgrade = {
+    enable = (inputs.self.rev or "dirty") != "dirty";
+    flake = "github:Deathlord89/dotfiles";
+    flags = [ "--refresh" ];
+    dates = "hourly";
+    randomizedDelaySec = "60s";
   };
 
   services = {
