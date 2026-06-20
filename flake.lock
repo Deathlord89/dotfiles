@@ -396,15 +396,15 @@
       "locked": {
         "lastModified": 1781887932,
         "narHash": "sha256-Z7apFRkv+He5rZ+C7oiGVwwym/3Uub+oqxaW24diNns=",
-        "ref": "refs/heads/main",
+        "owner": "Deathlord89",
+        "repo": "nix-secrets",
         "rev": "d5acc8d7b9882969ddb489560bde966698f07703",
-        "revCount": 48,
-        "type": "git",
-        "url": "ssh://git@github.com/Deathlord89/nix-secrets"
+        "type": "github"
       },
       "original": {
-        "type": "git",
-        "url": "ssh://git@github.com/Deathlord89/nix-secrets"
+        "owner": "Deathlord89",
+        "repo": "nix-secrets",
+        "type": "github"
       }
     },
     "nixos-hardware": {
