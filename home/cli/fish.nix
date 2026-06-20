@@ -18,6 +18,17 @@
       neofetch = "fastfetch";
       tree = "eza --tree";
     };
+    functions = {
+      flake-build-all = {
+        # https://discourse.nixos.org/t/best-practices-for-auto-updating-remotely-deployed-systems/67535/4
+        description = "Build all flake configurations with pueue";
+        body = ''
+          for host in (nix flake show --json | jq -r '.nixosConfigurations | keys[]')
+              pueue add "nix build --out-link result-$host .#nixosConfigurations.$host.config.system.build.toplevel"
+          end
+        '';
+      };
+    };
     plugins = [
       {
         name = "autopair";
