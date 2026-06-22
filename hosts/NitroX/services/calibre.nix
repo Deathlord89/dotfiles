@@ -1,7 +1,9 @@
 { pkgs, ... }:
 {
   environment.systemPackages = with pkgs; [
-    calibre
+    (calibre.override {
+      unrarSupport = true;
+    })
   ];
 
   networking.firewall.allowedTCPPorts = [
