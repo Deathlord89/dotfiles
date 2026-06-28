@@ -15,9 +15,9 @@
     #bitwarden-desktop
     discord
     feishin
-    (logseq.override {
-      electron_39 = electron_40;
-    })
+    # (logseq.override {
+    #   electron_39 = electron_40;
+    # })
     mediainfo
     mediainfo-gui
     nextcloud-client
