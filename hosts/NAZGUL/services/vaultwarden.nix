@@ -59,7 +59,7 @@
       vaultwarden = {
         repository = "rclone:pCloud:Backups/Homeserver";
         user = "vaultwarden";
-        backupPrepareCommand = "${config.services.postgresql.package}/bin/pg_dump --clean -d vaultwarden > /var/lib/bitwarden_rs/backup.sql";
+        backupPrepareCommand = "${config.services.postgresql.package}/bin/pg_dump --clean --if-exists --no-owner --no-privileges -d vaultwarden > /var/lib/bitwarden_rs/backup.sql";
         backupCleanupCommand = "rm /var/lib/bitwarden_rs/backup.sql";
         passwordFile = config.sops.secrets."vaultwarden/restic_pass".path;
         rcloneConfigFile = config.sops.secrets."vaultwarden/rclone_conf".path;

@@ -118,7 +118,7 @@
         user = "nextcloud";
         backupPrepareCommand = ''
           ${config.services.nextcloud.occ}/bin/nextcloud-occ maintenance:mode --on
-          ${config.services.postgresql.package}/bin/pg_dump --clean -d nextcloud -f /var/cloud/backup.sql
+          ${config.services.postgresql.package}/bin/pg_dump --clean --if-exists --no-owner --no-privileges -d nextcloud -f /var/cloud/backup.sql
         '';
         backupCleanupCommand = ''
           rm /var/cloud/backup.sql

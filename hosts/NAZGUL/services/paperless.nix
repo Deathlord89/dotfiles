@@ -95,7 +95,7 @@
       paperless = {
         repository = "rclone:pCloud:Backups/Homeserver";
         user = "paperless";
-        backupPrepareCommand = "${config.services.postgresql.package}/bin/pg_dump --clean -d paperless > /var/media/documents/backup.sql";
+        backupPrepareCommand = "${config.services.postgresql.package}/bin/pg_dump --clean --if-exists --no-owner --no-privileges -d paperless > /var/media/documents/backup.sql";
         backupCleanupCommand = "rm /var/media/documents/backup.sql";
         passwordFile = config.sops.secrets."paperless/restic_pass".path;
         rcloneConfigFile = config.sops.secrets."paperless/rclone_conf".path;
