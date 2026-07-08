@@ -13,6 +13,7 @@
             id = "default";
             path = "/home/ma-gerbig/Sync";
             devices = [
+              "iPhone"
               "NAZGUL"
               "steamdeck"
               "T460p"
