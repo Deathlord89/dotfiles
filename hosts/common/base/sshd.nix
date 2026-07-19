@@ -10,7 +10,6 @@
       PermitTunnel = false;
       UseDns = false;
       KbdInteractiveAuthentication = false;
-      GSSAPIAuthentication = false;
       X11Forwarding = if (builtins.isString desktop) then true else false;
       MaxAuthTries = 3;
       MaxSessions = 2;
