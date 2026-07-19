@@ -373,11 +373,11 @@
         "systems": "systems_2"
       },
       "locked": {
-        "lastModified": 1781887932,
-        "narHash": "sha256-Z7apFRkv+He5rZ+C7oiGVwwym/3Uub+oqxaW24diNns=",
+        "lastModified": 1784457836,
+        "narHash": "sha256-P1IyQPpNAWmlCLwvChSqTbnDSPzxE90cGCH7ifLmV1c=",
         "owner": "Deathlord89",
         "repo": "nix-secrets",
-        "rev": "d5acc8d7b9882969ddb489560bde966698f07703",
+        "rev": "adbfb25e696544acf9517292923d11109e0fb678",
         "type": "github"
       },
       "original": {
