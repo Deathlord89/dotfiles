@@ -16,5 +16,6 @@
     # When applied, the unstable nixpkgs set (declared in the flake inputs) will
     # be accessible through 'pkgs.unstable'
     unstable = inputs.nixpkgs-unstable.legacyPackages.${final.stdenv.hostPlatform.system};
+    unstable-small = inputs.nixpkgs-unstable-small.legacyPackages.${final.stdenv.hostPlatform.system};
   };
 }

@@ -8,6 +8,9 @@
     # NixOS Untable - also see the 'unstable-packages' overlay at 'overlays/default.nix'.
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
 
+    # NixOS Untable-Small - also see the 'unstable-packages' overlay at 'overlays/default.nix'.
+    nixpkgs-unstable-small.url = "github:nixos/nixpkgs/nixos-unstable-small";
+
     # A collection of NixOS modules covering hardware quirks
     nixos-hardware.url = "github:nixos/nixos-hardware/master";
 
