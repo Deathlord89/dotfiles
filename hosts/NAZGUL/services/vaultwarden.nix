@@ -1,6 +1,7 @@
 {
   config,
   inputs,
+  pkgs,
   sopsFolder,
   ...
 }:
@@ -26,6 +27,8 @@
   services = {
     vaultwarden = {
       enable = true;
+
+      package = pkgs.unstable-small.vaultwarden;
 
       dbBackend = "postgresql";
       configurePostgres = false;
