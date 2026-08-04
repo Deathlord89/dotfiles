@@ -12,16 +12,16 @@
   ++ lib.optional (builtins.pathExists (./. + "/${desktop}")) ./${desktop};
 
   home.packages = with pkgs; [
-    #bitwarden-desktop
+    unstable.bitwarden-desktop
     discord
     feishin
+    libreoffice
     # (logseq.override {
     #   electron_39 = electron_40;
     # })
     mediainfo
     mediainfo-gui
     nextcloud-client
-    portfolio
     qownnotes
     zotero
   ];
