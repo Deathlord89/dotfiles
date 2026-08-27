@@ -130,8 +130,7 @@
           "/var/cloud/"
         ];
         pruneOpts = [
-          "--tag nextcloud"
-          "--keep-daily 7 --keep-weekly 4 --keep-monthly 6 --keep-yearly 1"
+          "--keep-hourly 8 --keep-daily 7 --keep-weekly 4 --keep-monthly 6 --keep-yearly 2"
         ];
         extraBackupArgs = [
           "--tag nextcloud"
@@ -146,7 +145,7 @@
           "/var/cloud/data/appdata_*/preview/"
         ];
         timerConfig = {
-          OnCalendar = "03:00";
+          OnCalendar = "00:15";
           RandomizedDelaySec = "120";
         };
       };

@@ -66,10 +66,6 @@
         paths = [
           "/var/lib/bitwarden_rs"
         ];
-        pruneOpts = [
-          "--tag vaultwarden"
-          "--keep-hourly 8 --keep-daily 7 --keep-weekly 4 --keep-monthly 6 --keep-yearly 1"
-        ];
         extraBackupArgs = [
           "--tag vaultwarden"
           "--limit-upload 750"

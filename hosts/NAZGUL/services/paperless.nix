@@ -102,10 +102,6 @@
         paths = [
           "/var/media/documents"
         ];
-        pruneOpts = [
-          "--tag paperless"
-          "--keep-hourly 8 --keep-daily 7 --keep-weekly 4 --keep-monthly 6 --keep-yearly 1"
-        ];
         extraBackupArgs = [
           "--tag paperless"
           "--limit-upload 750"
