@@ -44,6 +44,9 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # VPN-Confinement
+    vpn-confinement.url = "github:Maroka-chan/VPN-Confinement";
+
     # Theming
     stylix.url = "github:danth/stylix/release-26.05";
 
