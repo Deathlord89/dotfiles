@@ -74,7 +74,42 @@ in
       torrentingPort = 6881;
       openFirewall = true;
       serverConfig = {
+        Preferences = {
+          General.Locale = "de";
+          WebUI = {
+            Username = "ma-gerbig";
+            Password_PBKDF2 = "@ByteArray(5IFzUKVSy9VPueMaVOGaPw==:maI2zM+slNQ4Ir/icw4PJvaO5xd3J9AU/0unQaEhb3WqhfBtOdtOWmd1GZ/vJOLCfowkmOhXtYWgSOPBaelmGA==)";
+          };
+        };
+        Core.AutoDeleteAddedTorrentFile = "IfAdded";
         LegalNotice.Accepted = true;
+        Network.PortForwardingEnabled = false;
+        BitTorrent = {
+          ExcludedFileNamesEnabled = true;
+          Session = {
+            TorrentContentLayout = "Subfolder";
+            DefaultSavePath = "/var/data/downloads/complete/torrents";
+            TempPathEnabled = true;
+            TempPath = "/var/data/downloads/incomplete/torrents";
+            DisableAutoTMMByDefault = false;
+            DisableAutoTMMTriggers = {
+              CategorySavePathChanged = false;
+              DefaultSavePathChanged = false;
+            };
+            ExcludedFileNames = "*.rar, *.r[0-9]*, *.lnk, *.scr, *.arj";
+            GlobalDLSpeedLimit = "4000";
+            GlobalUPSpeedLimit = "750";
+            MaxConnections = "-1";
+            MaxConnectionsPerTorrent = "-1";
+            MaxUploads = "-1";
+            MaxUploadsPerTorrent = "-1";
+            QueueingSystemEnabled = false;
+            MaxActiveDownloads = "-1";
+            MaxActiveTorrents = "-1";
+            MaxActiveUploads = "-1";
+          };
+        };
+
       };
     };
 
