@@ -187,7 +187,7 @@
           };
           "consume" = {
             type = "zfs_fs";
-            mountpoint = "/var/media/documents/consume";
+            mountpoint = "/var/documents/consume";
             options = {
               mountpoint = "legacy";
               quota = "5G";
@@ -271,17 +271,17 @@
               mountpoint = "/var/cloud";
             };
           };
+          "documents" = {
+            type = "zfs_fs";
+            options = {
+              mountpoint = "/var/documents";
+            };
+          };
           "media" = {
             type = "zfs_fs";
             options = {
               atime = "off";
               mountpoint = "none";
-            };
-          };
-          "media/documents" = {
-            type = "zfs_fs";
-            options = {
-              mountpoint = "/var/media/documents";
             };
           };
           "media/isos" = {

@@ -38,8 +38,8 @@
       address = "0.0.0.0";
       port = 8083;
       dataDir = "/var/lib/paperless";
-      mediaDir = "/var/media/documents/";
-      consumptionDir = "/var/media/documents/consume";
+      mediaDir = "/var/documents/";
+      consumptionDir = "/var/documents/consume";
       consumptionDirIsPublic = true;
 
       passwordFile = "${config.sops.secrets."paperless/adminpass".path}";
@@ -95,12 +95,12 @@
       paperless = {
         repository = "rclone:pCloud:Backups/Homeserver";
         user = "paperless";
-        backupPrepareCommand = "${config.services.postgresql.package}/bin/pg_dump --clean --if-exists --no-owner --no-privileges -d paperless > /var/media/documents/backup.sql";
-        backupCleanupCommand = "rm /var/media/documents/backup.sql";
+        backupPrepareCommand = "${config.services.postgresql.package}/bin/pg_dump --clean --if-exists --no-owner --no-privileges -d paperless > /var/documents/backup.sql";
+        backupCleanupCommand = "rm /var/documents/backup.sql";
         passwordFile = config.sops.secrets."paperless/restic_pass".path;
         rcloneConfigFile = config.sops.secrets."paperless/rclone_conf".path;
         paths = [
-          "/var/media/documents"
+          "/var/documents"
         ];
         extraBackupArgs = [
           "--tag paperless"
@@ -108,7 +108,7 @@
         ];
         exclude = [
           "*.log"
-          "/var/media/documents/consume/"
+          "/var/documents/consume/"
         ];
         timerConfig = {
           OnCalendar = "*-*-* 00,03,06,09,12,15,18,21:00:00";
@@ -144,7 +144,7 @@
         environmentFiles = [ "${config.sops.secrets."paperless/ftp_env.enc".path}" ];
         ports = [ "20-21:20-21" ];
         volumes = [
-          "/var/media/documents/consume:/home/paperless/consume"
+          "/var/documents/consume:/home/paperless/consume"
         ];
         labels = {
           "io.containers.autoupdate" = "registry";
