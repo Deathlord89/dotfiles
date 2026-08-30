@@ -8,6 +8,8 @@ let
   mediaGroup = "media";
 in
 {
+  imports = [ inputs.vpn-confinement.nixosModules.default ];
+
   users.groups.${mediaGroup} = {
     members = [
       "${config.services.jellyfin.user}"
@@ -64,6 +66,18 @@ in
       group = mediaGroup;
     };
 
+    qbittorrent = {
+      enable = true;
+      inherit (config.services.jellyfin) user;
+      group = mediaGroup;
+      webuiPort = 8084;
+      torrentingPort = 6881;
+      openFirewall = true;
+      serverConfig = {
+        LegalNotice.Accepted = true;
+      };
+    };
+
     prowlarr = {
       enable = true;
       openFirewall = true;
@@ -111,9 +125,16 @@ in
     };
   };
 
-  # Add `yt-dlp` to jellyfin path
-  systemd.services.jellyfin = {
-    path = [ pkgs.yt-dlp ];
+  systemd.services = {
+    # Add systemd service to VPN network namespace
+    qbittorrent.vpnConfinement = {
+      enable = true;
+      vpnNamespace = "wg0";
+    };
+    # Add `yt-dlp` to jellyfin path
+    jellyfin = {
+      path = [ pkgs.yt-dlp ];
+    };
   };
 
   optional.podman.enable = true;
