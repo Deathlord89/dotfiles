@@ -53,7 +53,7 @@ in
       settings = {
         Address = "192.168.10.10";
         Port = 4533;
-        MusicFolder = "/var/media/music";
+        MusicFolder = "/var/data/media/music";
         "LastFM.Language" = "de";
       };
       environmentFile = config.sops.secrets."last_fm/env.enc".path;
@@ -204,8 +204,8 @@ in
         volumes = [
           "jdownloader_app:/opt/JDownloader/app:rw"
           "/var/lib/jdownloader:/opt/JDownloader/app/cfg:rw"
-          "/var/media/downloads:/opt/JDownloader/Downloads:rw"
-          "/var/media/videos/neu:/opt/JDownloader/Extract:rw"
+          "/var/data/downloads/incomplete/jdownloader:/opt/JDownloader/Downloads:rw"
+          "/var/data/downloads/complete/jdownloader:/opt/JDownloader/Extract:rw"
           "/etc/localtime:/etc/localtime:ro"
         ];
         labels = {

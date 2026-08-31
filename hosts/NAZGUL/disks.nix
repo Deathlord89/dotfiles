@@ -204,7 +204,7 @@
           "downloads" = {
             type = "zfs_fs";
             options = {
-              mountpoint = "/var/media/downloads";
+              mountpoint = "/var/data/downloads/incomplete";
             };
           };
           "pgsql" = {
@@ -271,40 +271,17 @@
               mountpoint = "/var/cloud";
             };
           };
+          "data" = {
+            type = "zfs_fs";
+            options = {
+              mountpoint = "/var/data";
+              recordsize = "1m";
+            };
+          };
           "documents" = {
             type = "zfs_fs";
             options = {
               mountpoint = "/var/documents";
-            };
-          };
-          "media" = {
-            type = "zfs_fs";
-            options = {
-              atime = "off";
-              mountpoint = "none";
-            };
-          };
-          "media/isos" = {
-            type = "zfs_fs";
-            options = {
-              mountpoint = "/var/media/isos";
-              recordsize = "1m";
-            };
-          };
-          "media/music" = {
-            type = "zfs_fs";
-            options = {
-              compression = "lz4";
-              mountpoint = "/var/media/music";
-              recordsize = "1m";
-            };
-          };
-          "media/videos" = {
-            type = "zfs_fs";
-            options = {
-              compression = "off";
-              mountpoint = "/var/media/videos";
-              recordsize = "1m";
             };
           };
           "reserved" = {

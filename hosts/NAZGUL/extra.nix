@@ -16,7 +16,7 @@
       playlists
       uniques
       ;
-    outputDir = "/var/media/videos/YouTube";
+    outputDir = "/var/data/media/videos/YouTube";
   };
 
   system.autoUpgrade = {
