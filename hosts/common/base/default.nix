@@ -17,6 +17,7 @@
   };
 
   environment.systemPackages = with pkgs; [
+    comma
     curl
     git
     lm_sensors
