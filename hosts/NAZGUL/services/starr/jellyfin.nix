@@ -87,6 +87,8 @@ in
         BitTorrent = {
           ExcludedFileNamesEnabled = true;
           Session = {
+            Interface = "wg00";
+            InterfaceName = "wg00";
             TorrentContentLayout = "Subfolder";
             DefaultSavePath = "/var/data/downloads/complete/torrents";
             TempPathEnabled = true;
