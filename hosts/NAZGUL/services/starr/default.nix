@@ -21,10 +21,15 @@
     accessibleFrom = [
       "192.168.10.0/24"
     ];
+    allowedEgress = [ "192.168.10.10" ];
     portMappings = [
       {
         from = 8084;
         to = 8084;
+      }
+      {
+        from = 9696;
+        to = 9696;
       }
     ];
     openVPNPorts = [

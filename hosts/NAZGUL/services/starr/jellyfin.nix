@@ -164,6 +164,10 @@ in
 
   systemd.services = {
     # Add systemd service to VPN network namespace
+    prowlarr.vpnConfinement = {
+      enable = true;
+      vpnNamespace = "wg0";
+    };
     qbittorrent.vpnConfinement = {
       enable = true;
       vpnNamespace = "wg0";
