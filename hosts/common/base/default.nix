@@ -2,7 +2,6 @@
   hostname,
   lib,
   libx,
-  pkgs,
   ...
 }:
 {
@@ -15,16 +14,4 @@
     useDHCP = lib.mkDefault true;
     networkmanager.enable = true;
   };
-
-  environment.systemPackages = with pkgs; [
-    comma
-    curl
-    git
-    lm_sensors
-    pciutils
-    usbutils
-    wget
-  ];
-
-  programs.fish.enable = true;
 }
