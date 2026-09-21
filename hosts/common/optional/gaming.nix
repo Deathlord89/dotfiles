@@ -44,7 +44,7 @@ in
 
     environment.systemPackages = with pkgs; [
       #ludusavi # Backing up your PC video game saves
-      protonup-qt # Install and manage GE-Proton
+      unstable.protonup-qt # Install and manage GE-Proton
     ];
 
     # Enable 32 bit OpenGL
