@@ -14,6 +14,7 @@
     inputs.nixos-hardware.nixosModules.common-pc
     inputs.nixos-hardware.nixosModules.common-pc-ssd
 
+    ../common/hardware/tartarus_pro.nix
     ../common/hardware/yubikey.nix
   ];
 
