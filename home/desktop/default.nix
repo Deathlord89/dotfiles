@@ -16,9 +16,6 @@
     discord
     feishin
     libreoffice
-    # (logseq.override {
-    #   electron_39 = electron_40;
-    # })
     mediainfo
     mediainfo-gui
     nextcloud-client
